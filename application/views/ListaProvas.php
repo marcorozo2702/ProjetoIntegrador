@@ -26,7 +26,7 @@ and open the template in the editor.
                     echo '<tr>';
                         echo '<td>'.$p->nome.'</td>';
                         echo '<td>'.$p->tempo.'</td>';
-                        echo '<td>'.$p->descrição.'</td>';
+                        echo '<td>'.$p->descricao.'</td>';
                         echo '<td>'.$p->NIntegrantes.'</td>';
                     echo '</tr>';
                 }
