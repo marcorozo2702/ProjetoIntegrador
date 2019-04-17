@@ -18,6 +18,7 @@ and open the template in the editor.
                     <th>Tempo</th>
                     <th>Descrição</th>
                     <th>Numero de integrantes</th>
+                    <th>Opções</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +29,9 @@ and open the template in the editor.
                         echo '<td>'.$p->tempo.'</td>';
                         echo '<td>'.$p->descricao.'</td>';
                         echo '<td>'.$p->NIntegrantes.'</td>';
+                        echo '<td>'
+                                    .'<a href="' . $this->config->base_url().'index.php/Prova/alterar/'.$p->id.'">Alterar</a>'
+                            .'</td>';
                     echo '</tr>';
                 }
                 ?>

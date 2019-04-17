@@ -43,7 +43,7 @@ class Prova extends CI_Controller {
                     'nome' => $this->input->post('nome'),
                     'tempo' => $this->input->post('tempo'),
                     'descricao' => $this->input->post('descricao'),
-                    'NIntegrantes' => $this->input->post('NIntegrantes'),
+                    'NIntegrantes' => $this->input->post('NIntegrantes')
                 );
                 
                 //chama o metodo insert do Model passando os dados recebidos por POST para gravar no db, e ja vê as linhas afetadas
@@ -55,6 +55,45 @@ class Prova extends CI_Controller {
                     $this->session->set_flashdata('mensagem','Erro ao registrar prova!');
                     redirect('Prova/cadastrar');//se nao der certo manda de volta para o cadastro
                 }
+            }
+        }
+        
+        public function alterar($id){
+            if ($id > 0){
+                $this->load->model('Prova_model');
+                
+                //regras de validação
+                $this->form_validation->set_rules('nome', 'nome', 'required');
+                $this->form_validation->set_rules('tempo', 'tempo', 'required');
+                $this->form_validation->set_rules('descricao', 'descricao', 'required');
+                $this->form_validation->set_rules('NIntegrantes', 'NIntegrantes', 'required');
+                
+                //valida se passou na validação anterior
+                if ($this->form_validation->run() == false){
+                    //monta uma variavel ($data) para mandar dados para a view e chama o metodo getOnde(pegar 1) do Prova_model
+                    //para resgatar os dados da prova a ser alterada
+                    $data['prova'] = $this->Prova_model->getOne($id);
+                    
+                    $this->load->view('FormProva',$data); //carrega a view do formulario
+                } else {
+                    //resgata os dados inseridos por POST
+                    $data = array(
+                        'nome' => $this->input->post('nome'),
+                        'tempo' => $this->input->post('tempo'),
+                        'descricao' => $this->input->post('descricao'),
+                        'NIntegrantes' => $this->input->post('NIntegrantes')
+                    );
+                    
+                    if ($this->Prova_model->update($id, $data)){
+                        $this->session->set_flashdata('mensagem', 'Prova alterada.');
+                        redirect('Prova/listar');
+                    } else {
+                        $this->session->set_flashdata('mensagem', 'Ocorreu um erro ao alterar.');
+                        redirect('Prova/alterar' .$id);
+                    }
+                }
+            } else {
+                redirect('Prova/listar');
             }
         }
 }
