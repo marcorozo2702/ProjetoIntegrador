@@ -11,4 +11,9 @@ class Prova_model extends CI_Model{
         return $query->result();
         
     }
+    
+    public function insert($data = array()){
+        $this->db->insert('prova', $data); //chcma o db e insere os dados vindos do furmulario
+        return $this->db->affected_rows(); //retorno das linhas afetadas
+    }
 }
