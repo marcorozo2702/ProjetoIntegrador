@@ -19,25 +19,34 @@ and open the template in the editor.
             echo $mensagem;
         }
         ?>
-        <form action="" method="POST">
-            <input type="hidden" name="id" value="<?=(isset($prova)) ? $prova->nome : '';?>">
-             <div class="form-group">
-            <label for="nome"> Nome: </label>
-            <input type="text" name="nome" id="nome" value="<?=(isset($prova)) ? $prova->nome : '';?>">
-            <br>
-             </div>
-            <label for="tempo"> Tempo: </label>
-            <input type="text" name="tempo" id="tempo" value="<?=(isset($prova)) ? $prova->tempo : '';?>">
-            <br>
-            <label for="descricao"> Descrição: </label>
-            <input type="text" name="descricao" id="descricao" value="<?=(isset($prova)) ? $prova->descricao : '';?>">
-            <br>
-            <label for="NIntegrantes"> Numero de integrantes: </label>
-            <input type="text" name="NIntegrantes" id="NIntegrantes" value="<?=(isset($prova)) ? $prova->NIntegrantes : '';?>">
-            <br><br>
+        <div class="container mt-5" >
+            <div class="row">
+                <div class="col-6 offset-md-3">
+                    <div class="card">
+                        <h5 class="card-header"><i class="far fa-edit"></i> Formulário Gincana</h5>
+                        <div class="card-body">
+                            <form action="" method="POST">
+                                <input type="hidden" name="id" value="<?= (isset($prova)) ? $prova->nome : ''; ?>">
+                                <div><label for="nome"> Nome: </label><div>
+                                <input type="text" name="nome" id="nome" class="form-control" value="<?= (isset($prova)) ? $prova->nome : ''; ?>">
+                                <br>
+                                <div><label for="tempo"> Tempo: </label></div>
+                                <input type="text" name="tempo" id="tempo" class="form-control" value="<?= (isset($prova)) ? $prova->tempo : ''; ?>">
+                                <br>
+                                <div><label for="descricao"> Descrição: </label></div>
+                                <input type="text" name="descricao" id="descricao" class="form-control" value="<?= (isset($prova)) ? $prova->descricao : ''; ?>">
+                                <br>
+                                <div><label for="NIntegrantes"> Numero de integrantes: </label></div>
+                                <input type="text" name="NIntegrantes" id="NIntegrantes" class="form-control" value="<?= (isset($prova)) ? $prova->NIntegrantes : ''; ?>">
+                                <br><br>
 
-            <button type="submit">Enviar</button>
-            <button type="reset">Limpar</button>
-        </form>
+                                <div class="text-center"><button class="btn btn-success" type="submit">Enviar</button>
+                                <button class="btn btn-info" type="reset">Limpar</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
