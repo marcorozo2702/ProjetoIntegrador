@@ -31,6 +31,8 @@ and open the template in the editor.
                         echo '<td>'.$p->NIntegrantes.'</td>';
                         echo '<td>'
                                     .'<a href="' . $this->config->base_url().'index.php/Prova/alterar/'.$p->id.'">Alterar</a>'
+                                    .' | '
+                                    .'<a href="' . $this->config->base_url().'index.php/Prova/deletar/'.$p->id.'">Deletar</a>'
                             .'</td>';
                     echo '</tr>';
                 }

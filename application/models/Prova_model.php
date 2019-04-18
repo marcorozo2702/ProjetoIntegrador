@@ -40,4 +40,15 @@ class Prova_model extends CI_Model{
             return false;
         }
     }
+    
+    public function delete($id){
+        if ($id > 0){
+            $this->db->where('id',$id);//acha o id para deletar
+            $this->db->delete('prova');
+            
+            return $this->db->affected_rows(); //retorno das linhas afetadas
+        } else {
+            return false;
+        }
+    }
 }

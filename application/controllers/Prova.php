@@ -96,4 +96,18 @@ class Prova extends CI_Controller {
                 redirect('Prova/listar');
             }
         }
+        
+        public function deletar($id){
+            if ($id >0){
+                $this->load->model('Prova_model');
+                
+                //manda para o model deletar e ja valida o retorno para saber se funcionou
+                if ($this->Prova_model->delete($id)){
+                    $this->session->set_flashdata('mensagem', 'Sucesso ao deletar.');
+                } else {
+                    $this->session->set_flashdata('mensagem', 'Falha ao deletar.');
+                } 
+                redirect('Prova/listar');
+            }
+        }
 }
