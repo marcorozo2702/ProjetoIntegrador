@@ -11,6 +11,13 @@ and open the template in the editor.
     </head>
     <body>
         <h1>Lista de Provas</h1>
+        <?php
+        //para exibir mensagem (falha) para o usuario mesmo redirecionando
+        $mensagem = $this->session->flashdata('mensagem');
+        if (isset($mensagem)) {
+            echo $mensagem;
+        }
+        ?>
         <table border = "1">
             <thead>
                 <tr>

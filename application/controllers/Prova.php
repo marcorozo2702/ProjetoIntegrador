@@ -88,8 +88,8 @@ class Prova extends CI_Controller {
                         $this->session->set_flashdata('mensagem', 'Prova alterada.');
                         redirect('Prova/listar');
                     } else {
-                        $this->session->set_flashdata('mensagem', 'Ocorreu um erro ao alterar.');
-                        redirect('Prova/alterar' .$id);
+                        $this->session->set_flashdata('mensagem', 'Ocorreu um erro ao alterar.<br><br>');
+                        redirect('Prova/alterar/' .$id);
                     }
                 }
             } else {
