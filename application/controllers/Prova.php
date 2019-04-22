@@ -49,10 +49,10 @@ class Prova extends CI_Controller {
                 //chama o metodo insert do Model passando os dados recebidos por POST para gravar no db, e ja vê as linhas afetadas
                 if ($this->Prova_model->insert($data)){
                     //salva uma mensagem na sessão
-                    $this->session->set_flashdata('mensagem','Prova registrada!');
+                    $this->session->set_flashdata('mensagem','<div class="alert alert-success">Prova registrada!</div>');
                     redirect('Prova/listar'); //*Se der certo manda para a lista
                 } else {
-                    $this->session->set_flashdata('mensagem','Erro ao registrar prova!');
+                    $this->session->set_flashdata('mensagem','<div class="alert alert-danger>Erro ao registrar prova!</div>');
                     redirect('Prova/cadastrar');//se nao der certo manda de volta para o cadastro
                 }
             }
@@ -85,10 +85,10 @@ class Prova extends CI_Controller {
                     );
                     
                     if ($this->Prova_model->update($id, $data)){
-                        $this->session->set_flashdata('mensagem', 'Prova alterada.');
+                        $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Prova alterada.</div>');
                         redirect('Prova/listar');
                     } else {
-                        $this->session->set_flashdata('mensagem', 'Ocorreu um erro ao alterar.<br><br>');
+                        $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Ocorreu um erro ao alterar.</div><br><br>');
                         redirect('Prova/alterar/' .$id);
                     }
                 }
@@ -103,9 +103,9 @@ class Prova extends CI_Controller {
                 
                 //manda para o model deletar e ja valida o retorno para saber se funcionou
                 if ($this->Prova_model->delete($id)){
-                    $this->session->set_flashdata('mensagem', 'Sucesso ao deletar.');
+                    $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Sucesso ao deletar.</div>');
                 } else {
-                    $this->session->set_flashdata('mensagem', 'Falha ao deletar.');
+                    $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Falha ao deletar.</div>');
                 } 
                 redirect('Prova/listar');
             }

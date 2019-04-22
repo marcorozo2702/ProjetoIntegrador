@@ -12,17 +12,17 @@ and open the template in the editor.
         <title>Provas</title>
     </head>
     <body><nav class="navbar navbar-expand-lg navbar-black bg-light">
-            <a class="navbar-brand" href="http://127.0.0.1/Gincana_CI/index.php/Prova/listar"><i class="fab fa-jedi-order"></i></a>
+            <a class="navbar-brand" href="http://127.0.0.1/Gincana_CI/index.php/Prova/listar"><i class="fas fa-graduation-cap icone1 ml-5"></i></i></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item ml-5">
-                        <a class="nav-link" href="http://127.0.0.1/Gincana_CI/index.php/Prova/listar">Início</a>
+                        <a class="nav-link" href="http://127.0.0.1/Gincana_CI/index.php/Prova/listar"><i class="fas fa-list"></i>   Listagem</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://127.0.0.1/Gincana_CI/index.php/Prova/cadastrar" tabindex="-1" aria-disabled="true">Cadastro</a>
+                        <a class="nav-link" href="http://127.0.0.1/Gincana_CI/index.php/Prova/cadastrar" tabindex="-1" aria-disabled="true"> <i class="fas fa-pen"></i> Cadastro</a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
