@@ -9,7 +9,6 @@ class Prova_model extends CI_Model{
         
                         //result ja nos retorna em formato de array
         return $query->result();
-        
     }
     
     public function insert($data = array()){
