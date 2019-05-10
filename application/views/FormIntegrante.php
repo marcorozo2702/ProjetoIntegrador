@@ -8,6 +8,7 @@
     </head>
     <body>
         <?php
+        
         //para exibir mensagem (falha) para o usuario mesmo redirecionando
         $mensagem = $this->session->flashdata('mensagem');
         if (isset($mensagem)) {
@@ -29,7 +30,17 @@
                                         <input type="date" name="data_nasc" id="data_nasc" class="form-control" value="<?= (isset($integrante)) ? $integrante->data_nasc : ''; ?>">
                                         <br>
                                         <div><label for="id_equipe"> Equipe: </label></div>
-                                        <input type="text" name="id_equipe" id="id_equipe" class="form-control" value="<?= (isset($integrante)) ? $integrante->id_equipe : ''; ?>">
+                                        <select name="id_equipe" class="form-control">
+                                            <option> selecione uma equipe </option>
+                                               <?php
+                                           
+                                        foreach ($equipes as $e) {
+                                        ?>
+                                            <option <?php echo (isset($integrante) ? (($integrante->id_equipe == $e->id) ? 'selected' : null) : null) ?> value="<?php echo $e->id ?>"> <?php echo $e->nome; ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                        </select>
                                         <br>
                                         <div><label for="rg"> RG: </label></div>
                                         <input type="text" name="rg" id="rg" class="form-control" value="<?= (isset($integrante)) ? $integrante->rg : ''; ?>">

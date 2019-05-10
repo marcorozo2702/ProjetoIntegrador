@@ -24,8 +24,8 @@
                                             echo '<td>' . $i->nome . '</td>';   
                                             echo '<td>' . $i->data_nasc . '</td>';
                                             echo '<td>' . $i->nomeequipe . '</td>';
-                                            echo '<td>' . $i->rg . '</td>';
-                                            echo '<td>' . $i->cpf . '</td>';
+                                            echo '<td>' . (!empty($i->rg)? $i->rg : '-'). '</td>';
+                                            echo '<td>' . (!empty($i->rg)? $i->cpf : '-') . '</td>';
                                             echo '<td>'
                                             . '<a class="apagar btn btn-info btn-sm " href="' . $this->config->base_url() . 'Integrante/alterar/' . $i ->id . '">Alterar</a>'
                                             . ' | '

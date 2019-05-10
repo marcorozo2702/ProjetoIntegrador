@@ -40,9 +40,16 @@ class Integrante extends CI_Controller {
 
         //validação do preenchimento
         if ($this->form_validation->run() == false) {
+
+            //carrega o model pelo nome ("Equipe_model") ou pelo apelido ("em")
+            $this->load->model('Equipe_model', 'em');
+
+            //$data precisa ser em formato de array para ser passada para a lista na view
+            //chamamos o metodo getAll (para buscar todos, já que e uma listagem) do arquivo Equipe_model
+            $data['equipes'] = $this->em->getAll();
             //recarrega o formulario se não passar na validação dos dados
             $this->load->view('Header');
-            $this->load->view('FormIntegrante');
+            $this->load->view('FormIntegrante', $data);
             $this->load->view('Footer');
         } else {
             //carrega o model Prova
@@ -82,6 +89,13 @@ class Integrante extends CI_Controller {
                 //monta uma variavel ($data) para mandar dados para a view e chama o metodo getOnde(pegar 1) do Prova_model
                 //para resgatar os dados da prova a ser alterada
                 $data['integrante'] = $this->Integrante_model->getOne($id);
+                
+                //carrega o model pelo nome ("Equipe_model") ou pelo apelido ("em")
+                $this->load->model('Equipe_model', 'em');
+
+                //$data precisa ser em formato de array para ser passada para a lista na view
+                //chamamos o metodo getAll (para buscar todos, já que e uma listagem) do arquivo Equipe_model
+                $data['equipes'] = $this->em->getAll();
 
                 $this->load->view('Header');
                 $this->load->view('FormIntegrante', $data); //carrega a view do formulario
@@ -108,7 +122,7 @@ class Integrante extends CI_Controller {
             redirect('Integrante/listar');
         }
     }
-    
+
     public function deletar($id) {
         if ($id > 0) {
             $this->load->model('Integrante_model');
