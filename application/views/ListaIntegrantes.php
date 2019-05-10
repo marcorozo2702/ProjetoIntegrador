@@ -11,24 +11,26 @@
                                         <tr class="table-secondary">
                                             <th>Nome </th>
                                             <th>Data de Nascimento </th>
+                                            <th>Equipe </th> 
                                             <th>RG </th>
                                             <th>CPF </th>
-                                            <th>Opções</th>
+                                            <th>Opções </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         foreach ($integrantes as $i) {
                                             echo '<tr>';
-                                            echo '<td>' . $i->nome . '</td>';
+                                            echo '<td>' . $i->nome . '</td>';   
                                             echo '<td>' . $i->data_nasc . '</td>';
+                                            echo '<td>' . $i->nomeequipe . '</td>';
                                             echo '<td>' . $i->rg . '</td>';
                                             echo '<td>' . $i->cpf . '</td>';
-                                            //echo '<td>'
-                                            //. '<a class="apagar btn btn-info btn-sm " href="' . $this->config->base_url() . 'index.php/Prova/alterar/' . $i ->id . '">Alterar</a>'
-                                            //. ' | '
-                                            //. '<a class="apagar btn btn-danger btn-sm " href="' . $this->config->base_url() . 'index.php/Prova/deletar/' . $i->id . '">Deletar</a>'
-                                            //. '</td>';
+                                            echo '<td>'
+                                            . '<a class="apagar btn btn-info btn-sm " href="' . $this->config->base_url() . 'Integrante/alterar/' . $i ->id . '">Alterar</a>'
+                                            . ' | '
+                                            . '<a class="apagar btn btn-danger btn-sm " href="' . $this->config->base_url() . 'Integrante/deletar/' . $i->id . '">Deletar</a>'
+                                            . '</td>';
                                             echo '</tr>';
                                         }
                                         ?>

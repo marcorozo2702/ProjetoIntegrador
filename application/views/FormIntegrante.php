@@ -18,21 +18,24 @@
             <div class="row">
                 <div class="col-6 offset-md-3">
                     <div class="card">
-                        <h5 class="card-header"><i class="far fa-edit"></i> Cadastro provas<a href="<?= $this->config->base_url() . 'Prova/listar' ?>" class="ml-2">[voltar]</a></h5>
+                        <h5 class="card-header"><i class="far fa-edit"></i> Cadastro Integrantes<a href="<?= $this->config->base_url() . 'Integrante/listar' ?>" class="ml-2">[voltar]</a></h5>
                         <div class="card-body">
                             <form action="" method="POST">
-                                <input type="hidden" name="id" value="<?= (isset($prova)) ? $prova->nome : ''; ?>">
+                                <input type="hidden" name="id" value="<?= (isset($integrante)) ? $integrante->nome : ''; ?>">
                                 <div><label for="nome"> Nome: </label><div>
-                                        <input type="text" name="nome" id="nome" class="form-control" value="<?= (isset($prova)) ? $prova->nome : ''; ?>">
+                                        <input type="text" name="nome" id="nome" class="form-control" value="<?= (isset($integrante)) ? $integrante->nome : ''; ?>">
                                         <br>
-                                        <div><label for="tempo"> Tempo: </label></div>
-                                        <input type="text" name="tempo" id="tempo" class="form-control" value="<?= (isset($prova)) ? $prova->tempo : ''; ?>">
+                                        <div><label for="data_nasc"> Data de Nascimento: </label></div>
+                                        <input type="date" name="data_nasc" id="data_nasc" class="form-control" value="<?= (isset($integrante)) ? $integrante->data_nasc : ''; ?>">
                                         <br>
-                                        <div><label for="descricao"> Descrição: </label></div>
-                                        <input type="text" name="descricao" id="descricao" class="form-control" value="<?= (isset($prova)) ? $prova->descricao : ''; ?>">
+                                        <div><label for="id_equipe"> Equipe: </label></div>
+                                        <input type="text" name="id_equipe" id="id_equipe" class="form-control" value="<?= (isset($integrante)) ? $integrante->id_equipe : ''; ?>">
                                         <br>
-                                        <div><label for="NIntegrantes"> Numero de integrantes: </label></div>
-                                        <input type="text" name="NIntegrantes" id="NIntegrantes" class="form-control" value="<?= (isset($prova)) ? $prova->NIntegrantes : ''; ?>">
+                                        <div><label for="rg"> RG: </label></div>
+                                        <input type="text" name="rg" id="rg" class="form-control" value="<?= (isset($integrante)) ? $integrante->rg : ''; ?>">
+                                        <br>
+                                        <div><label for="cpf"> CPF: </label></div>
+                                        <input type="text" name="cpf" id="cpd" class="form-control" value="<?= (isset($integrante)) ? $integrante->cpf : ''; ?>">
                                         <br><br>
                                         <div class="text-center"><button class="btn btn-success" type="submit">Enviar</button>
                                             <button class="btn btn-info" type="reset">Limpar</button></div>

@@ -33,6 +33,15 @@
                             <a href="<?= $this->config->base_url() . 'Equipe/cadastrar' ?>" class="dropdown-item">Cadastrar</a>
                         </div>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" id="menuIntegrantes" class="nav-link dropdown-toggle ml-5" data-toggle="dropdown">
+                            Integrantes
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="menuIntegrantes">
+                            <a href="<?= $this->config->base_url() . 'Integrante/listar' ?>" class="dropdown-item">Listar</a>
+                            <a href="<?= $this->config->base_url() . 'Integrante/cadastrar' ?>" class="dropdown-item">Cadastrar</a>
+                        </div>
+                    </li>
                 </ul>
                 <ul class="navbar-nav justify-content-end">
                     <li class="nav-item">

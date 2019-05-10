@@ -28,9 +28,9 @@
                                         <br>
                                         <div class="text-center"><button class="btn btn-success" type="submit">Enviar</button>
                                             <button class="btn btn-info" type="reset">Limpar</button></div>
-                                        </form>
                                     </div>
                                 </div>
+                            </form>
                         </div>
                     </div>
                 </div>
