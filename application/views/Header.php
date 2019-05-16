@@ -15,8 +15,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
+                    <li>
+                        <div><a href="<?= $this->config->base_url() . 'Rank/listar' ?>" class="ml-4 nav-link">Ranking</a></div>
+                    </li>
                     <li class="nav-item dropdown">
-                        <a href="#" id="menuProvas" class="nav-link dropdown-toggle ml-5" data-toggle="dropdown">
+                        <a href="#" id="menuProvas" class="nav-link dropdown-toggle ml-4" data-toggle="dropdown">
                             Provas
                         </a>
                         <div class="dropdown-menu" aria-labelledby="menuProvas">
@@ -25,7 +28,7 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="#" id="menuProvas" class="nav-link dropdown-toggle ml-5" data-toggle="dropdown">
+                        <a href="#" id="menuProvas" class="nav-link dropdown-toggle ml-4" data-toggle="dropdown">
                             Equipes
                         </a>
                         <div class="dropdown-menu" aria-labelledby="menuProvas">
@@ -34,7 +37,7 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="#" id="menuIntegrantes" class="nav-link dropdown-toggle ml-5" data-toggle="dropdown">
+                        <a href="#" id="menuIntegrantes" class="nav-link dropdown-toggle ml-4" data-toggle="dropdown">
                             Integrantes
                         </a>
                         <div class="dropdown-menu" aria-labelledby="menuIntegrantes">
@@ -43,7 +46,7 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="#" id="menuPontuacao" class="nav-link dropdown-toggle ml-5" data-toggle="dropdown">
+                        <a href="#" id="menuPontuacao" class="nav-link dropdown-toggle ml-4" data-toggle="dropdown">
                             Pontuacao
                         </a>
                         <div class="dropdown-menu" aria-labelledby="menuPontuacao">
@@ -52,7 +55,7 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="#" id="menuUsuario" class="nav-link dropdown-toggle ml-5" data-toggle="dropdown">
+                        <a href="#" id="menuUsuario" class="nav-link dropdown-toggle ml-4" data-toggle="dropdown">
                             Usuário
                         </a>
                         <div class="dropdown-menu" aria-labelledby="menuUsuario">

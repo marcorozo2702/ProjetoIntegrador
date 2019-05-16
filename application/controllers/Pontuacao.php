@@ -36,6 +36,7 @@ class Pontuacao extends CI_Controller {
         $this->form_validation->set_rules('pontuacao', 'pontuacao', 'required'); //nome do campo, id do campo, se é requirido ou não
         $this->form_validation->set_rules('id_equipe', 'id_equipe', 'required');
         $this->form_validation->set_rules('id_prova', 'id_prova', 'required');
+        date_default_timezone_set('America/Sao_paulo');
 
         //validação do preenchimento
         if ($this->form_validation->run() == false) {
@@ -66,7 +67,7 @@ class Pontuacao extends CI_Controller {
                 'id_prova' => $this->input->post('id_prova'),
                 'id_usuario' => $this->session->userdata('idUsuario'),
                 'pontos' => $this->input->post('pontuacao'),
-                'data_hora' => $this->input->post('data_hora')
+                'data_hora' => date('Y-m-d H:i:s')
             );
 
             //chama o metodo insert do Model passando os dados recebidos por POST para gravar no db, e ja vê as linhas afetadas
@@ -89,6 +90,7 @@ class Pontuacao extends CI_Controller {
             $this->form_validation->set_rules('pontuacao', 'pontuacao', 'required');
             $this->form_validation->set_rules('id_equipe', 'id_equipe', 'required');
             $this->form_validation->set_rules('id_prova', 'id_prova', 'required');
+            date_default_timezone_set('America/Sao_paulo');
 
             //valida se passou na validação anterior
             if ($this->form_validation->run() == false) {
@@ -117,7 +119,7 @@ class Pontuacao extends CI_Controller {
                     'id_prova' => $this->input->post('id_prova'),
                     'id_usuario' => $this->session->userdata('idUsuario'),
                     'pontos' => $this->input->post('pontuacao'),
-                    'data_hora' => $this->input->post('data_hora')
+                    'data_hora' => date('Y-m-d H:i:s')
                 );
 
                 if ($this->Pontuacao_model->update($id, $data)) {

@@ -21,7 +21,7 @@
                                             <th>Pontos </th> 
                                             <th>Horário </th>
                                             <th>Usuario </th>
-                                            <th>Opções </th>
+                                            <th class="text-center" >Opções </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -33,10 +33,10 @@
                                             echo '<td>' . $p->pontos . '</td>';
                                             echo '<td>' . (!empty($p->data_hora)? $p->data_hora : '-'). '</td>';
                                             echo '<td>' . $p->nomeusuario . '</td>';
-                                            echo '<td>'
-                                            . '<a class="apagar btn btn-info btn-sm " href="' . $this->config->base_url() . 'Pontuacao/alterar/' . $p ->id . '">Alterar</a>'
+                                            echo '<td class="text-center">'
+                                            . '<a class=" btn btn-outline-info btn-sm " href="' . $this->config->base_url() . 'Pontuacao/alterar/' . $p ->id . '">Alterar</a>'
                                             . ' | '
-                                            . '<a class="apagar btn btn-danger btn-sm " href="' . $this->config->base_url() . 'Pontuacao/deletar/' . $p->id . '">Deletar</a>'
+                                            . '<a class=" btn btn-outline-danger btn-sm " href="' . $this->config->base_url() . 'Pontuacao/deletar/' . $p->id . '">Deletar</a>'
                                             . '</td>';
                                             echo '</tr>';
                                         }

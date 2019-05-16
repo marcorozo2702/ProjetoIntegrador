@@ -43,9 +43,6 @@ if (isset($mensagem)) {
                             <div><label for="pontuacao"> Pontos: </label></div>
                             <input type="text" name="pontuacao" id="pontuacao" class="form-control" value="<?= !empty($this->input->post('pontuacao')) ? set_value('pontuacao') : ((isset($pontuacao)) ? $pontuacao->pontos : ''); ?>">
                             <br>
-                            <div><label for="data_nasc"> Horário: </label></div>
-                            <input type="datetime-local" name="data_hora" id="data_hora" class="form-control" value="<?= (isset($pontuacao)) ? $pontuacao->data_hora : ''; ?><?php echo set_value('data_hora'); ?>">
-                            <br>
                             <div class="text-center"><button class="btn btn-success" type="submit">Enviar</button>
                                 <button class="btn btn-info" type="reset">Limpar</button></div>
                         </div>
