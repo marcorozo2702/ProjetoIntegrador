@@ -1,12 +1,13 @@
 <?php
 
 class Pontuacao_model extends CI_Model {
+    
 
     //método que realiza a busca de TODOS(ALL) as provas no db
     function getAll() {
         //define os campos que serão selecionados
         $this->db->select('pontuacao.*, equipe.nome as nomeequipe, prova.nome as nomeprova, usuario.nome as nomeusuario');
-
+        $this->db->order_by('nomeequipe');
         //define a tabela que será chamada no FROM do select
         $this->db->from('pontuacao');
 

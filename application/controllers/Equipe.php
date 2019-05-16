@@ -9,7 +9,8 @@ class Equipe extends CI_Controller {
         parent::__construct();
         //chama o método que faz a validação de login de usuario
         $this->load->model('Equipe_model');
-        //$this->Equipe_model->verificaLogin();
+        $this->load->model('Usuario_model');
+        $this->Usuario_model->verificaLogin();
     }
     
     // o metodo index é o metodo chamado por padrao
@@ -29,7 +30,7 @@ class Equipe extends CI_Controller {
 
         //chama a view passando o conteudo listado (getAll=buscar todos) da variavel $data (variavel que se refere ao banco de dados)
         $this->load->view('Header');
-        $this->load->view('ListaEquipes', $data);
+        $this->load->view('Equipe/ListaEquipes', $data);
         $this->load->view('Footer');
     }
     
@@ -41,7 +42,7 @@ class Equipe extends CI_Controller {
         if ($this->form_validation->run() == false) {
             //recarrega o formulario se não passar na validação dos dados
             $this->load->view('Header');
-            $this->load->view('FormEquipe');
+            $this->load->view('Equipe/FormEquipe');
             $this->load->view('Footer');
         } else {
             //carrega o model Equipe
@@ -55,10 +56,10 @@ class Equipe extends CI_Controller {
             //chama o metodo insert do Model passando os dados recebidos por POST para gravar no db, e ja vê as linhas afetadas
             if ($this->Equipe_model->insert($data)) {
                 //salva uma mensagem na sessão
-                $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Prova registrada!</div>');
+                $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Equipe registrada!</div>');
                 redirect('Equipe/listar'); //*Se der certo manda para a lista
             } else {
-                $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Erro ao registrar prova!</div>');
+                $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Erro ao registrar equipe!</div>');
                 redirect('Equipe/cadastrar'); //se nao der certo manda de volta para o cadastro
             }
         }
@@ -78,7 +79,7 @@ class Equipe extends CI_Controller {
                 $data['equipe'] = $this->Equipe_model->getOne($id);
 
                 $this->load->view('Header');
-                $this->load->view('FormEquipe', $data); //carrega a view do formulario
+                $this->load->view('Equipe/FormEquipe', $data); //carrega a view do formulario
                 $this->load->view('Footer');
             } else {
                 //resgata os dados inseridos por POST
@@ -87,7 +88,7 @@ class Equipe extends CI_Controller {
                 );
 
                 if ($this->Equipe_model->update($id, $data)) {
-                    $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Prova alterada.</div>');
+                    $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Equipe alterada.</div>');
                     redirect('Equipe/listar');
                 } else {
                     $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Ocorreu um erro ao alterar.</div><br><br>');

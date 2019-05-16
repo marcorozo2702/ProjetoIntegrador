@@ -6,18 +6,20 @@
  * @author Marco
  */
 
-class Usuario_model extends CI_Model{
+class Usuario_model extends CI_Model {
+
+    const minhasenha = 'marcoSENAC2019';
 
     //método que busca o usuario no banco de dados
     //recebe como parametro o email e a senha
     public function getUsuario($email, $senha) {
         $this->db->where('email', $email);
-        $this->db->where('senha', sha1($senha . 'marcoSENAC2019'));
+        $this->db->where('senha', sha1($senha . self::minhasenha));
 
         $query = $this->db->get('usuario');
         return $query->row(0);
     }
-    
+
     //Método valida na sessão se o usuário esta logado
     public function verificaLogin() {
         $logado = $this->session->userdata('logado');
@@ -30,5 +32,54 @@ class Usuario_model extends CI_Model{
         }
     }
 
-}
+    function getAll() {
+        //define os campos que serão selecionados
 
+        $query = $this->db->get('usuario');
+
+        //result ja nos retorna em formato de array
+        return $query->result();
+    }
+
+    public function insert($data) {
+        $data['senha'] = sha1($data['senha'] . self::minhasenha);
+        $this->db->insert('usuario', $data); //chama o db e insere os dados vindos do furmulario
+        return $this->db->affected_rows(); //retorno das linhas afetadas
+    }
+
+    public function getOne($id) {
+        //faz o filtro por id na consulta sql
+        $this->db->where('id', $id); //SELECT * FROM prova WHERE id='valor recebido no parametro'
+        //busca a prova na db respeitando o filtro
+        $query = $this->db->get('usuario');
+        //retorna apenas a primeira linha
+        return $query->row(0);
+    }
+
+    //método que recebe o ID e os dados para alterar e faz o UPDATE na db
+    public function update($id, $data) {
+        if ($id > 0) {
+            //filtra o prova (id) que será alterado 
+            $this->db->where('id', $id); // SELECT * FROM equipe WHERE id = 'valor recebido
+            $data['senha'] = sha1($data['senha'] . self::minhasenha);
+            //altera os dados de acordo com oq foi recebido
+            $this->db->update('usuario', $data);
+            //retorno das linhas afetadas
+            return $this->db->affected_rows();
+        } else {
+            return false;
+        }
+    }
+    
+    public function delete($id){
+        if ($id > 0){
+            $this->db->where('id',$id);//acha o id para deletar
+            $this->db->delete('usuario');
+            
+            return $this->db->affected_rows(); //retorno das linhas afetadas
+        } else {
+            return false;
+        }
+    }
+
+}

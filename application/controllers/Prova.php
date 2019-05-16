@@ -8,6 +8,7 @@ class Prova extends CI_Controller {
         //chama o construtos da classe pai (CI_Controller)
         parent::__construct();
         //chama o método que faz a validação de login de usuario
+        $this->load->model('Prova_model');
         $this->load->model('Usuario_model');
         $this->Usuario_model->verificaLogin();
     }
@@ -20,16 +21,13 @@ class Prova extends CI_Controller {
 
     public function listar() {
 
-        //carrega o model pelo nome ("Prova_model") ou pelo apelido ("gm")
-        $this->load->model('Prova_model', 'gm');
-
         //$data precisa ser em formato de array para ser passada para a lista na view
         //chamamos o metodo getAll (para buscar todos, já que e uma listagem) do arquivo Prova_model
-        $data['provas'] = $this->gm->getAll();
+        $data['provas'] = $this->Prova_model->getAll();
 
         //chama a view passando o conteudo listado (getAll=buscar todos) da variavel $data (variavel que se refere ao banco de dados)
         $this->load->view('Header');
-        $this->load->view('ListaProvas', $data);
+        $this->load->view('Prova/ListaProvas', $data);
         $this->load->view('Footer');
     }
 
@@ -44,11 +42,9 @@ class Prova extends CI_Controller {
         if ($this->form_validation->run() == false) {
             //recarrega o formulario se não passar na validação dos dados
             $this->load->view('Header');
-            $this->load->view('FormProva');
+            $this->load->view('Prova/FormProva');
             $this->load->view('Footer');
         } else {
-            //carrega o model Prova
-            $this->load->model('Prova_model');
 
             //pega os dados com POST
             $data = array(
@@ -72,7 +68,6 @@ class Prova extends CI_Controller {
 
     public function alterar($id) {
         if ($id > 0) {
-            $this->load->model('Prova_model');
 
             //regras de validação
             $this->form_validation->set_rules('nome', 'nome', 'required');
@@ -87,7 +82,7 @@ class Prova extends CI_Controller {
                 $data['prova'] = $this->Prova_model->getOne($id);
 
                 $this->load->view('Header');
-                $this->load->view('FormProva', $data); //carrega a view do formulario
+                $this->load->view('Prova/FormProva', $data); //carrega a view do formulario
                 $this->load->view('Footer');
             } else {
                 //resgata os dados inseridos por POST
@@ -113,7 +108,6 @@ class Prova extends CI_Controller {
 
     public function deletar($id) {
         if ($id > 0) {
-            $this->load->model('Prova_model');
 
             //manda para o model deletar e ja valida o retorno para saber se funcionou
             if ($this->Prova_model->delete($id)) {

@@ -9,7 +9,8 @@ class Integrante extends CI_Controller {
         parent::__construct();
         //chama o método que faz a validação de login de usuario
         $this->load->model('Integrante_model');
-        //$this->Equipe_model->verificaLogin();
+        $this->load->model('Usuario_model');
+        $this->Usuario_model->verificaLogin();
     }
 
     // o metodo index é o metodo chamado por padrao
@@ -29,7 +30,7 @@ class Integrante extends CI_Controller {
 
         //chama a view passando o conteudo listado (getAll=buscar todos) da variavel $data (variavel que se refere ao banco de dados)
         $this->load->view('Header');
-        $this->load->view('ListaIntegrantes', $data);
+        $this->load->view('Integrante/ListaIntegrantes', $data);
         $this->load->view('Footer');
     }
 
@@ -49,7 +50,7 @@ class Integrante extends CI_Controller {
             $data['equipes'] = $this->em->getAll();
             //recarrega o formulario se não passar na validação dos dados
             $this->load->view('Header');
-            $this->load->view('FormIntegrante', $data);
+            $this->load->view('Integrante/FormIntegrante', $data);
             $this->load->view('Footer');
         } else {
             //carrega o model Prova
@@ -67,10 +68,10 @@ class Integrante extends CI_Controller {
             //chama o metodo insert do Model passando os dados recebidos por POST para gravar no db, e ja vê as linhas afetadas
             if ($this->Integrante_model->insert($data)) {
                 //salva uma mensagem na sessão
-                $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Prova registrada!</div>');
+                $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Integrante registrado!</div>');
                 redirect('Integrante/listar'); //*Se der certo manda para a lista
             } else {
-                $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Erro ao registrar prova!</div>');
+                $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Erro ao registrar integrante!</div>');
                 redirect('Integrante/cadastrar'); //se nao der certo manda de volta para o cadastro
             }
         }
@@ -98,7 +99,7 @@ class Integrante extends CI_Controller {
                 $data['equipes'] = $this->em->getAll();
 
                 $this->load->view('Header');
-                $this->load->view('FormIntegrante', $data); //carrega a view do formulario
+                $this->load->view('Integrante/FormIntegrante', $data); //carrega a view do formulario
                 $this->load->view('Footer');
             } else {
                 //resgata os dados inseridos por POST
@@ -111,7 +112,7 @@ class Integrante extends CI_Controller {
                 );
 
                 if ($this->Integrante_model->update($id, $data)) {
-                    $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Prova alterada.</div>');
+                    $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Integrante alterado.</div>');
                     redirect('Integrante/listar');
                 } else {
                     $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Ocorreu um erro ao alterar.</div><br><br>');

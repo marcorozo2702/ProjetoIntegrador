@@ -51,6 +51,15 @@
                             <a href="<?= $this->config->base_url() . 'Pontuacao/cadastrar' ?>" class="dropdown-item">Cadastrar</a>
                         </div>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" id="menuUsuario" class="nav-link dropdown-toggle ml-5" data-toggle="dropdown">
+                            Usuário
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="menuUsuario">
+                            <a href="<?= $this->config->base_url() . 'Usuario/listar' ?>" class="dropdown-item">Listar</a>
+                            <a href="<?= $this->config->base_url() . 'Usuario/cadastrar' ?>" class="dropdown-item">Cadastrar</a>
+                        </div>
+                    </li>
                 </ul>
                 <ul class="navbar-nav justify-content-end">
                     <li class="nav-item">

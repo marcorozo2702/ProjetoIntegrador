@@ -1,9 +1,16 @@
         <div class="container mt-5" >
             <div><h1>Lista de Integrantes</h1></div>
+            <?php
+            //para exibir mensagem (falha) para o usuario mesmo redirecionando
+            $mensagem = $this->session->flashdata('mensagem');
+            if (isset($mensagem)) {
+                echo $mensagem;
+            }
+            ?>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <h5 class="card-header"><i class="fas fa-crown"></i> Integrantes cadastradas</h5>
+                        <h5 class="card-header">Integrantes cadastrados</h5>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered" >
