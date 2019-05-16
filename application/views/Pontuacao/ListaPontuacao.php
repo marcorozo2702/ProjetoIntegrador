@@ -32,7 +32,7 @@
                                             echo '<td>' . $p->nomeprova . '</td>';
                                             echo '<td>' . $p->pontos . '</td>';
                                             echo '<td>' . (!empty($p->data_hora)? $p->data_hora : '-'). '</td>';
-                                            echo '<td>' . (!empty($p->nomeusuario)? $p->nomeusuario: '-') . '</td>';
+                                            echo '<td>' . $p->nomeusuario . '</td>';
                                             echo '<td>'
                                             . '<a class="apagar btn btn-info btn-sm " href="' . $this->config->base_url() . 'Pontuacao/alterar/' . $p ->id . '">Alterar</a>'
                                             . ' | '

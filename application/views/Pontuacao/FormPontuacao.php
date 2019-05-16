@@ -40,18 +40,6 @@ if (isset($mensagem)) {
                                 ?>
                             </select>
                             <br>
-                            <div><label for="id_usuario"> User: </label></div>
-                            <select name="id_usuario" class="form-control">
-                                <option> selecione um usuario </option>
-                                <?php
-                                foreach ($usuario as $u) {
-                                    ?>
-                                    <option <?php echo (isset($pontuacao) ? (($pontuacao->id_usuario == $u->id) ? 'selected' : null) : null) ?> value="<?php echo $u->id ?>" <?php echo set_select('id_usuario', $u->id) ?>> <?php echo $u->nome; ?></option>
-                                    <?php
-                                }
-                                ?>
-                            </select>
-                            <br>
                             <div><label for="pontuacao"> Pontos: </label></div>
                             <input type="text" name="pontuacao" id="pontuacao" class="form-control" value="<?= !empty($this->input->post('pontuacao')) ? set_value('pontuacao') : ((isset($pontuacao)) ? $pontuacao->pontos : ''); ?>">
                             <br>

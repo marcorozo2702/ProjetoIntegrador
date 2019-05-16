@@ -36,7 +36,6 @@ class Pontuacao extends CI_Controller {
         $this->form_validation->set_rules('pontuacao', 'pontuacao', 'required'); //nome do campo, id do campo, se é requirido ou não
         $this->form_validation->set_rules('id_equipe', 'id_equipe', 'required');
         $this->form_validation->set_rules('id_prova', 'id_prova', 'required');
-        $this->form_validation->set_rules('id_usuario', 'id_usuario', 'required');
 
         //validação do preenchimento
         if ($this->form_validation->run() == false) {
@@ -65,7 +64,7 @@ class Pontuacao extends CI_Controller {
             $data = array(
                 'id_equipe' => $this->input->post('id_equipe'),
                 'id_prova' => $this->input->post('id_prova'),
-                'id_usuario' => $this->input->post('id_usuario'),
+                'id_usuario' => $this->session->userdata('idUsuario'),
                 'pontos' => $this->input->post('pontuacao'),
                 'data_hora' => $this->input->post('data_hora')
             );
@@ -90,7 +89,6 @@ class Pontuacao extends CI_Controller {
             $this->form_validation->set_rules('pontuacao', 'pontuacao', 'required');
             $this->form_validation->set_rules('id_equipe', 'id_equipe', 'required');
             $this->form_validation->set_rules('id_prova', 'id_prova', 'required');
-            $this->form_validation->set_rules('id_usuario', 'id_usuario', 'required');
 
             //valida se passou na validação anterior
             if ($this->form_validation->run() == false) {
@@ -117,7 +115,7 @@ class Pontuacao extends CI_Controller {
                 $data = array(
                     'id_equipe' => $this->input->post('id_equipe'),
                     'id_prova' => $this->input->post('id_prova'),
-                    'id_usuario' => $this->input->post('id_usuario'),
+                    'id_usuario' => $this->session->userdata('idUsuario'),
                     'pontos' => $this->input->post('pontuacao'),
                     'data_hora' => $this->input->post('data_hora')
                 );
@@ -134,7 +132,7 @@ class Pontuacao extends CI_Controller {
             redirect('Pontuacao/listar');
         }
     }
-    
+
     public function deletar($id) {
         if ($id > 0) {
             $this->load->model('Pontuacao_model');
