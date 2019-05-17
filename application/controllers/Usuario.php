@@ -31,7 +31,8 @@ class Usuario extends CI_Controller {
                 $data = array(
                     'idUsuario' => $usuario->id,
                     'email' => $usuario->email,
-                    'logado' => TRUE
+                    'logado' => TRUE,
+                    'admin' => $usuario->admin
                 );
                 //mandamos o CodeIgniter salvar na sessão os dados do usuario percebva quie o metodo set_userdata é diferente do método set_flashdata,
                 //pois ele slva dados permanentes enquanto durar a sessão
@@ -54,7 +55,7 @@ class Usuario extends CI_Controller {
     }
 
     public function listar() {
-        
+
         //chama o método que faz a validação de login de usuario
         $this->load->model('Usuario_model');
         $this->Usuario_model->verificaLogin();
@@ -70,103 +71,118 @@ class Usuario extends CI_Controller {
     }
 
     public function cadastrar() {
-        
-        //chama o método que faz a validação de login de usuario
-        $this->load->model('Usuario_model');
-        $this->Usuario_model->verificaLogin();
-        
-        //fazendo a validação
-        $this->form_validation->set_rules('nome', 'nome', 'required'); //nome do campo, id do campo, se é requirido ou não
-        $this->form_validation->set_rules('email', 'email', 'required');
-        $this->form_validation->set_rules('senha', 'senha', 'required');
+        if ($this->session->userdata('admin') == '1') {
 
-        //validação do preenchimento
-        if ($this->form_validation->run() == false) {
+            //chama o método que faz a validação de login de usuario
+            $this->load->model('Usuario_model');
+            $this->Usuario_model->verificaLogin();
 
-            //recarrega o formulario se não passar na validação dos dados
-            $this->load->view('Header');
-            $this->load->view('Usuario/FormUsuario');
-            $this->load->view('Footer');
-        } else {
-
-            //pega os dados com POST
-            $data = array(
-                'nome' => $this->input->post('nome'),
-                'email' => $this->input->post('email'),
-                'senha' => $this->input->post('senha')
-            );
-
-            //chama o metodo insert do Model passando os dados recebidos por POST para gravar no db, e ja vê as linhas afetadas
-            if ($this->Usuario_model->insert($data)) {
-                //salva uma mensagem na sessão
-                $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Novo usuario registrado!</div>');
-                redirect('Usuario/listar'); //*Se der certo manda para a lista
-            } else {
-                $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Erro ao registrar nopvo usuario!</div>');
-                redirect('Usuario/cadastrar'); //se nao der certo manda de volta para o cadastro
-            }
-        }
-    }
-
-    public function alterar($id) {
-        
-        //chama o método que faz a validação de login de usuario
-        $this->load->model('Usuario_model');
-        $this->Usuario_model->verificaLogin();
-        
-        if ($id > 0) {
-
-            //regras de validação
-            $this->form_validation->set_rules('nome', 'nome', 'required');
+            //fazendo a validação
+            $this->form_validation->set_rules('nome', 'nome', 'required'); //nome do campo, id do campo, se é requirido ou não
             $this->form_validation->set_rules('email', 'email', 'required');
             $this->form_validation->set_rules('senha', 'senha', 'required');
 
-            //valida se passou na validação anterior
+            //validação do preenchimento
             if ($this->form_validation->run() == false) {
-                //monta uma variavel ($data) para mandar dados para a view e chama o metodo getOnde(pegar 1) do Prova_model
-                //para resgatar os dados da Usuario a ser alterada
-                $data['usuario'] = $this->Usuario_model->getOne($id);
+
+                //recarrega o formulario se não passar na validação dos dados
                 $this->load->view('Header');
-                $this->load->view('Usuario/FormUsuario', $data); //carrega a view do formulario
+                $this->load->view('Usuario/FormUsuario');
                 $this->load->view('Footer');
             } else {
-                //resgata os dados inseridos por POST
+
+                //pega os dados com POST
                 $data = array(
                     'nome' => $this->input->post('nome'),
                     'email' => $this->input->post('email'),
                     'senha' => $this->input->post('senha')
                 );
 
-                if ($this->Usuario_model->update($id, $data)) {
-                    $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Usuario alterado.</div>');
-                    redirect('Usuario/listar');
+                //chama o metodo insert do Model passando os dados recebidos por POST para gravar no db, e ja vê as linhas afetadas
+                if ($this->Usuario_model->insert($data)) {
+                    //salva uma mensagem na sessão
+                    $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Novo usuario registrado!</div>');
+                    redirect('Usuario/listar'); //*Se der certo manda para a lista
                 } else {
-                    $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Ocorreu um erro ao alterar.</div><br><br>');
-                    redirect('Usuario/alterar/' . $id);
+                    $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Erro ao registrar nopvo usuario!</div>');
+                    redirect('Usuario/cadastrar'); //se nao der certo manda de volta para o cadastro
                 }
             }
         } else {
-            redirect('Usuario/listar');
+            $this->session->set_flashdata('mensagem', '<div class="alert alert-danger">SEM PERMISSÃO PARA DELETAR.</div>');
         }
+        redirect('Usuario/listar');
+    }
+
+    public function alterar($id) {
+        if ($this->session->userdata('admin') == '1') {
+
+            //chama o método que faz a validação de login de usuario
+            $this->load->model('Usuario_model');
+            $this->Usuario_model->verificaLogin();
+
+            if ($id > 0) {
+
+                //regras de validação
+                $this->form_validation->set_rules('nome', 'nome', 'required');
+                $this->form_validation->set_rules('email', 'email', 'required');
+                $this->form_validation->set_rules('senha', 'senha', 'required');
+
+                //valida se passou na validação anterior
+                if ($this->form_validation->run() == false) {
+                    //monta uma variavel ($data) para mandar dados para a view e chama o metodo getOnde(pegar 1) do Prova_model
+                    //para resgatar os dados da Usuario a ser alterada
+                    $data['usuario'] = $this->Usuario_model->getOne($id);
+                    $this->load->view('Header');
+                    $this->load->view('Usuario/FormUsuario', $data); //carrega a view do formulario
+                    $this->load->view('Footer');
+                } else {
+                    //resgata os dados inseridos por POST
+                    $data = array(
+                        'nome' => $this->input->post('nome'),
+                        'email' => $this->input->post('email'),
+                        'senha' => $this->input->post('senha')
+                    );
+
+                    if ($this->Usuario_model->update($id, $data)) {
+                        $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Usuario alterado.</div>');
+                        redirect('Usuario/listar');
+                    } else {
+                        $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Ocorreu um erro ao alterar.</div><br><br>');
+                        redirect('Usuario/alterar/' . $id);
+                    }
+                }
+            }
+        } else {
+            $this->session->set_flashdata('mensagem', '<div class="alert alert-danger">SEM PERMISSÃO PARA DELETAR.</div>');
+        }
+        redirect('Usuario/listar');
     }
 
     public function deletar($id) {
-        
-        //chama o método que faz a validação de login de usuario
-        $this->load->model('Usuario_model');
-        $this->Usuario_model->verificaLogin();
-        
-        if ($id > 0) {
-            $this->load->model('Usuario_model');
+        if ($this->session->userdata('admin') == '1') {
 
-            //manda para o model deletar e ja valida o retorno para saber se funcionou
-            if ($this->Usuario_model->delete($id)) {
-                $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Sucesso ao deletar.</div>');
-            } else {
-                $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Falha ao deletar.</div>');
+            //chama o método que faz a validação de login de usuario
+            $this->load->model('Usuario_model');
+            $this->Usuario_model->verificaLogin();
+
+            if ($id > 0) {
+                $this->load->model('Usuario_model');
+
+                //manda para o model deletar e ja valida o retorno para saber se funcionou
+                if ($this->Usuario_model->delete($id)) {
+                    $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Sucesso ao deletar.</div>');
+                    if ($id == $this->session->userdata('idUsuario')) {
+                        $this->session->sess_destroy();
+                    }
+                } else {
+                    $this->session->set_flashdata('mensagem', '<div class="alert alert-danger">Falha ao deletar.</div>');
+                }
             }
-            redirect('Usuario/listar');
+        } else {
+            $this->session->set_flashdata('mensagem', '<div class="alert alert-danger">SEM PERMISSÃO PARA DELETAR.</div>');
         }
+        redirect('Usuario/listar');
     }
 
 }

@@ -20,16 +20,25 @@
                     <div class="card">
                         <h5 class="card-header"><i class="far fa-edit"></i> Cadastro equipes<a href="<?= $this->config->base_url() . 'Equipe/listar' ?>" class="ml-2">[voltar]</a></h5>
                         <div class="card-body">
-                            <form action="" method="POST">
+                            <form action="" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="id" value="<?= (isset($equipe)) ? $equipe->nome : ''; ?>">
                                 <div><label for="nome"> Nome: </label><div>
                                         <input type="text" name="nome" id="nome" class="form-control" value="<?= (isset($equipe)) ? $equipe->nome : ''; ?>">
-                                        <br>
-                                        <br>
-                                        <div class="text-center"><button class="btn btn-success" type="submit">Enviar</button>
-                                            <button class="btn btn-info" type="reset">Limpar</button></div>
+                                        <br> 
+                                        <label for="userfile"> Logo: </label><div>
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                                </div>
+                                                <div class="custom-file">
+                                                    <input type="file" name="userfile" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                                    <label class="custom-file-label" for="inputGroupFile01">Selecione um arquivo</label>
+                                                </div>
+                                            </div>
+                                            <div class="text-center"><button class="btn btn-success" type="submit">Enviar</button>
+                                                <button class="btn btn-info" type="reset">Limpar</button></div>
+                                        </div>
                                     </div>
-                                </div>
                             </form>
                         </div>
                     </div>

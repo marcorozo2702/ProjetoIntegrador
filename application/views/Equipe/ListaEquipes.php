@@ -16,6 +16,7 @@
                                 <table class="table table-striped table-bordered" >
                                     <thead>
                                         <tr class="table-secondary">
+                                            <th>Logo </th>
                                             <th>Nome </th>
                                             <th>Opções </th>
                                         </tr>
@@ -24,6 +25,11 @@
                                         <?php
                                         foreach ($equipes as $e) {
                                             echo '<tr>';
+                                            if (!empty($e->imagem)) {
+                                                echo '<td> <img src="'  . base_url('/uploads/'. $e->imagem ) . '" width ="50"></td>';
+                                            } else {
+                                                echo '<td> <img src="'.base_url('/uploads/indisponivel.png') .'" width ="50" ></td>';
+                                            }
                                             echo '<td>' . $e->nome . '</td>';
                                             echo '<td class="text-right">'
                                             . '<a class="apagar btn btn-info btn-sm " href="' . $this->config->base_url() . 'index.php/Equipe/alterar/' . $e ->id . '">Alterar</a>'

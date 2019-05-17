@@ -27,11 +27,11 @@
                                             echo '<tr>';
                                             echo '<td>' . $u->nome . '</td>';   
                                             echo '<td>' . $u->email . '</td>';
-                                            echo '<td>'
-                                            . '<a class="apagar btn btn-info btn-sm " href="' . $this->config->base_url() . 'Usuario/alterar/' . $u ->id . '">Alterar</a>'
+                                            echo '<td>';
+                                            echo ($this->session->userdata('admin') == '1') ? '<a class="apagar btn btn-info btn-sm " href="' . $this->config->base_url() . 'Usuario/alterar/' . $u ->id . '">Alterar</a>'
                                             . ' | '
-                                            . '<a class="apagar btn btn-danger btn-sm " href="' . $this->config->base_url() . 'Usuario/deletar/' . $u->id . '">Deletar</a>'
-                                            . '</td>';
+                                            . '<a class="apagar btn btn-danger btn-sm " href="' . $this->config->base_url() . 'Usuario/deletar/' . $u->id . '">Deletar</a>' : '';
+                                            echo '</td>';
                                             echo '</tr>';
                                         }
                                         ?>
