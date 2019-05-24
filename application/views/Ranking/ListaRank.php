@@ -6,7 +6,7 @@
                         <h5 class="card-header"><i class="fas fa-crown"></i> Ranking da gincana</h5>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered" >
+                                <table id="ranking" class="table table-striped table-bordered"  >
                                     <thead>
                                         <tr class="table-secondary">
                                             <th>Posição </th>

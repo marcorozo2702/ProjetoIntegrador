@@ -13,7 +13,7 @@
                         <h5 class="card-header"> Equipes cadastradas</h5>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered" >
+                                <table id="teste123" class="table table-striped table-bordered" >
                                     <thead>
                                         <tr class="table-secondary">
                                             <th>Logo </th>
