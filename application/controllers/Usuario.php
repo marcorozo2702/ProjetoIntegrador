@@ -72,7 +72,7 @@ class Usuario extends CI_Controller {
 
     public function cadastrar() {
         if ($this->session->userdata('admin') == '1') {
-
+           
             //chama o método que faz a validação de login de usuario
             $this->load->model('Usuario_model');
             $this->Usuario_model->verificaLogin();
@@ -109,9 +109,10 @@ class Usuario extends CI_Controller {
                 }
             }
         } else {
-            $this->session->set_flashdata('mensagem', '<div class="alert alert-danger">SEM PERMISSÃO PARA DELETAR.</div>');
+            $this->session->set_flashdata('mensagem', '<div class="alert alert-danger">SEM PERMISSÃO PARA CADASTRAR.</div>');
+            redirect('Usuario/listar');
         }
-        redirect('Usuario/listar');
+        
     }
 
     public function alterar($id) {
@@ -155,8 +156,9 @@ class Usuario extends CI_Controller {
             }
         } else {
             $this->session->set_flashdata('mensagem', '<div class="alert alert-danger">SEM PERMISSÃO PARA DELETAR.</div>');
+            redirect('Usuario/listar');
         }
-        redirect('Usuario/listar');
+        
     }
 
     public function deletar($id) {

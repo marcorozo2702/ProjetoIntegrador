@@ -33,7 +33,7 @@
                                         <div><label for="senha"> Senha: </label></div>
                                         <input type="password" name="senha" id="senha" class="form-control" value="">
                                         <br><br>
-                                        <div class="text-center"><button class="btn btn-success" type="submit">Enviar</button>
+                                        <div class="text-center"><button class="btn btn-success" type="submit">Enviar</button> Esqueceu sua senha? <a href="#">Recuperar senha</a>
                                             <button class="btn btn-info" type="reset">Limpar</button></div>
                                     </div>
                                 </div>
