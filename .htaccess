@@ -1,0 +1,10 @@
+# este arquivo é lido pelo apache antes de qualquer requisição
+# e nele é possivel fazer configurações do Apache baseado em regras
+
+# Rewrite é um método do Apache para reescrita de URLs
+# Este código Rewrite reescreve a URL inserindo manualmente
+# o index.php na URL digitada para compatibilizar com o CodeIgniter
+RewriteEngine on 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
