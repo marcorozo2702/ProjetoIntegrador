@@ -77,7 +77,11 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => '127.0.0.1',
 	'username' => 'root',
+<<<<<<< HEAD
 	'password' => 'senac123',
+=======
+	'password' => '',
+>>>>>>> dbd882583a55d61b7dd1baf1289847080539678f
 	'database' => 'projetointegrador',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
