@@ -7,7 +7,6 @@
     </head>
     <body>        
         <div class="container mt-5" >
-            <div><h1>Lista de Jornalistas</h1></div>
             <div class="row">
                 <div class="col-12">
                     <div class="card">

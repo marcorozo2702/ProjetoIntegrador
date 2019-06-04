@@ -9,6 +9,8 @@ class Jornalista extends CI_Controller {
         parent::__construct();
         //chama o método que faz a validação de login de usuario
         $this->load->model('Jornalista_model');
+        $this->load->view('Header/Header');
+        $this->load->view('Footer/Footer');
     }
 
     public function index() {
@@ -82,7 +84,6 @@ class Jornalista extends CI_Controller {
                 //para resgatar os dados da prova a ser alterada
                 $data['jornalista'] = $this->Jornalista_model->getOne($id);
                 $this->load->view('Jornalista/Altera', $data); //carrega a view do formulario
-                
             } else {
                 //resgata os dados inseridos por POST
                 $data = array(
@@ -103,7 +104,7 @@ class Jornalista extends CI_Controller {
             redirect('Jornalista/lista');
         }
     }
-    
+
     public function deletar($id) {
         if ($id > 0) {
 
