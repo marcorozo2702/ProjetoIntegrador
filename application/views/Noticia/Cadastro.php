@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-        <title>Cadastro de Notícias</title>
-    </head>
-    <body>
+
         <div class="container mt-5" >
             <div class="row">
-                <div class="col-8 offset-md-2">
+                <div class="col-10 offset-md-1 ">
                     <div class="card">
                         <h5 class="card-header"><i class="far fa-edit"></i> Cadastro de Noticias</h5>
                         <div class="card-body">
@@ -18,7 +10,7 @@
                                 <div>
                                     <div>
                                         <label for="titulo"> Título: </label>
-                                        <input type="text" name="titulo" id="nome" class="form-control" value="">
+                                        <input type="text" name="titulo" id="titulo" class="form-control" value="">
                                         <br>
                                         <div><label for="descricao"> Descrição: </label></div>
                                         <input type="text" name="descricao" id="email" class="form-control" value="">
@@ -46,6 +38,9 @@
                                             }
                                             ?>
                                         </select>
+                                        <br>
+                                        <label for="texto"> Texto: </label>
+                                        <textarea name="texto" id="froala-editor"  class="form-control" value=""></textarea>
                                         <br><br>
                                         <div class="text-center"><button class="btn btn-success" type="submit">Enviar</button>
                                             <button class="btn btn-primary" type="reset">Limpar</button></div>
@@ -57,5 +52,4 @@
                 </div>
             </div>
         </div>
-    </body>
-</html>
+

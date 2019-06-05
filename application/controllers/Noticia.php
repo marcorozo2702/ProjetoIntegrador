@@ -41,6 +41,7 @@ class Noticia extends CI_Controller {
         $this->form_validation->set_rules('descricao', 'descricao', 'required');
         $this->form_validation->set_rules('categoria', 'categoria', 'required');
         $this->form_validation->set_rules('jornalista', 'jornalista', 'required');
+        date_default_timezone_set('America/Sao_paulo');
 
         //validação do preenchimento
         if ($this->form_validation->run() == false) {
@@ -62,8 +63,11 @@ class Noticia extends CI_Controller {
                 'descricao' => $this->input->post('descricao'),
                 'cd_categoria' => $this->input->post('categoria'),
                 'cd_jornalista' => $this->input->post('jornalista'),
+                'texto' => $this->input->post('texto'),
+                'data' => date('Y-m-d H:i:s')
             );
-
+            
+            
             if ($this->Noticia_model->insert($data)) {
                 $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Noticia inserido.</div>');
                 redirect('Noticia/lista');
@@ -73,5 +77,7 @@ class Noticia extends CI_Controller {
             }
         }
     }
+    
+    
     
 }
