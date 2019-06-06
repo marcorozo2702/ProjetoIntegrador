@@ -20,7 +20,7 @@ class Noticia extends CI_Controller {
     public function lista() {
         $this->listar();
     }
-    
+
     public function listar() {
 
         //$data precisa ser em formato de array para ser passada para a lista na view
@@ -30,11 +30,11 @@ class Noticia extends CI_Controller {
         //chama a view passando o conteudo listado (getAll=buscar todos) da variavel $data (variavel que se refere ao banco de dados)
         $this->load->view('Noticia/Lista', $data);
     }
-    
+
     public function cadastro() {
         $this->cadastrar();
     }
-    
+
     public function cadastrar() {
         //fazendo a validação
         $this->form_validation->set_rules('titulo', 'titulo', 'required'); //nome do campo, id do campo, se é requirido ou não
@@ -45,14 +45,14 @@ class Noticia extends CI_Controller {
 
         //validação do preenchimento
         if ($this->form_validation->run() == false) {
-            
+
             $this->load->model('Categoria_model');
             $this->load->model('Jornalista_model');
 
             $data['noticias'] = $this->Noticia_model->getAll();
             $data['categorias'] = $this->Categoria_model->getAll();
             $data['jornalistas'] = $this->Jornalista_model->getAll();
-            
+
             $this->load->view('Noticia/Cadastro', $data);
         } else {
 
@@ -66,8 +66,8 @@ class Noticia extends CI_Controller {
                 'texto' => $this->input->post('texto'),
                 'data' => date('Y-m-d H:i:s')
             );
-            
-            
+
+
             if ($this->Noticia_model->insert($data)) {
                 $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Noticia inserido.</div>');
                 redirect('Noticia/lista');
@@ -77,7 +77,68 @@ class Noticia extends CI_Controller {
             }
         }
     }
+
+    public function altera() {
+        $this->alterar($id);
+    }
+
+    public function alterar($id) {
+        if ($id > 0) {
+
+            //regras de validação
+            $this->form_validation->set_rules('titulo', 'titulo', 'required'); //nome do campo, id do campo, se é requirido ou não
+            $this->form_validation->set_rules('descricao', 'descricao', 'required');
+            $this->form_validation->set_rules('categoria', 'categoria', 'required');
+            $this->form_validation->set_rules('jornalista', 'jornalista', 'required');
+            date_default_timezone_set('America/Sao_paulo');
+
+            //valida se passou na validação anterior
+            if ($this->form_validation->run() == false) {
+
+                $this->load->model('Categoria_model');
+                $this->load->model('Jornalista_model');
+
+                $data['noticia'] = $this->Noticia_model->getOne($id);
+                $data['categorias'] = $this->Categoria_model->getAll();
+                $data['jornalistas'] = $this->Jornalista_model->getAll();
+
+
+                $this->load->view('Noticia/Altera', $data); //carrega a view do formulario
+            } else {
+                //resgata os dados inseridos por POST
+                $data = array(
+                    'titulo' => $this->input->post('titulo'),
+                    'descricao' => $this->input->post('descricao'),
+                    'cd_categoria' => $this->input->post('categoria'),
+                    'cd_jornalista' => $this->input->post('jornalista'),
+                    'texto' => $this->input->post('texto'),
+                    'data' => date('Y-m-d H:i:s')
+                );
+
+                if ($this->Noticia_model->update($id, $data)) {
+                    $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Jornalista alterado.</div>');
+                    redirect('Noticia/lista');
+                } else {
+                    $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Ocorreu um erro ao alterar.</div><br><br>');
+                    redirect('Noticia/altera/' . $id);
+                }
+            }
+        } else {
+            redirect('Noticia/lista');
+        }
+    }
     
-    
-    
+    public function deletar($id) {
+        if ($id > 0) {
+
+            //manda para o model deletar e ja valida o retorno para saber se funcionou
+            if ($this->Noticia_model->delete($id)) {
+                $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Sucesso ao deletar.</div>');
+            } else {
+                $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Falha ao deletar.</div>');
+            }
+            redirect('Noticia/lista');
+        }
+    }
+
 }

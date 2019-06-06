@@ -22,4 +22,38 @@ class Noticia_model extends CI_Model {
         $this->db->insert('noticia', $data); //chcma o db e insere os dados vindos do furmulario
         return $this->db->affected_rows(); //retorno das linhas afetadas
     }
+    
+    public function getOne($id){
+        //faz o filtro por id na consulta sql
+        $this->db->where('id', $id); //SELECT * FROM integrante WHERE id='valor recebido no parametro'
+        //busca a prova na db respeitando o filtro
+        $query = $this->db->get('noticia');
+        //retorna apenas a primeira linha
+        return $query->row(0);
+    }
+    
+    public function update($id,$data = array()){
+        if ($id > 0){
+            //filtra o prova (id) que será alterado 
+            $this->db->where('id', $id); // SELECT * FROM pontuacao + WHERE id = 'valor recebido
+            //altera os dados de acordo com oq foi recebido
+            $this->db->update('noticia', $data);
+            //retorno das linhas afetadas
+            return $this->db->affected_rows();
+        } else {
+            return false;
+        }
+    }
+    
+    public function delete($id){
+        if ($id > 0){
+            $this->db->where('id',$id);//acha o id para deletar
+            $this->db->delete('noticia');
+            
+            return $this->db->affected_rows(); //retorno das linhas afetadas
+        } else {
+            return false;
+        }
+    }
+    
 }

@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <h5 class="card-header"> Categorias</h5>
+                        <h5 class="card-header"> Categorias<a href="<?= $this->config->base_url() . 'Categoria/cadastro' ?>" class="btn btn-outline-dark btn-sm offset-md-10"> +Nova</a></h5>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered" >
@@ -26,8 +26,8 @@
                                             echo '<tr>';
                                             echo '<td>' . $c->nome . '</td>';
                                             echo '<td class="text-center">'
-                                            . '<a class="apagar btn btn-primary btn-sm mr-2" href="' . $this->config->base_url() . 'Categoria/alterar/' . $c ->id . '">Alterar</a>'
-                                            . '<a class="apagar btn btn-danger btn-sm " href="' . $this->config->base_url() . 'Categoria/deletar/' . $c->id . '">Deletar</a>'
+                                            . '<a class=" btn btn-primary btn-sm mr-2" href="' . $this->config->base_url() . 'Categoria/alterar/' . $c ->id . '">Alterar</a>'
+                                            . '<a class=" btn btn-danger btn-sm " href="' . $this->config->base_url() . 'Categoria/deletar/' . $c->id . '">Deletar</a>'
                                             . '</td>';
                                             echo '</tr>';
                                         }
