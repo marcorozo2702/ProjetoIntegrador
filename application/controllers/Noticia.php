@@ -67,6 +67,20 @@ class Noticia extends CI_Controller {
                 'data' => date('Y-m-d H:i:s')
             );
 
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_width'] = 1024;
+            $config['max_height'] = 768;
+            $config['encrypt_name'] = true;
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('userfile')) {
+                $error = array('error' => $this->upload->display_errors());
+                //cria uma sessão com o error e redireciona
+            } else {
+                //pega o nome do arquivo que foi enviado e adiciona no array  $data
+                $data['imagem'] = $this->upload->data('file_name');
+            }
+
 
             if ($this->Noticia_model->insert($data)) {
                 $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Noticia inserido.</div>');
@@ -115,6 +129,20 @@ class Noticia extends CI_Controller {
                     'data' => date('Y-m-d H:i:s')
                 );
 
+                $config['upload_path'] = './uploads/';
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_width'] = 1024;
+                $config['max_height'] = 768;
+                $config['encrypt_name'] = true;
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('userfile')) {
+                    $error = array('error' => $this->upload->display_errors());
+                    //cria uma sessão com o error e redireciona
+                } else {
+                    //pega o nome do arquivo que foi enviado e adiciona no array  $data
+                    $data['imagem'] = $this->upload->data('file_name');
+                }
+
                 if ($this->Noticia_model->update($id, $data)) {
                     $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Jornalista alterado.</div>');
                     redirect('Noticia/lista');
@@ -127,7 +155,7 @@ class Noticia extends CI_Controller {
             redirect('Noticia/lista');
         }
     }
-    
+
     public function deletar($id) {
         if ($id > 0) {
 

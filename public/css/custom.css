@@ -68,8 +68,8 @@ h1 p {
         text-align: center;
     }
     .logocabeca{
-    text-align: center;
-}
+        text-align: center;
+    }
 }
 .noticia{
     padding-right: 25px !important;
@@ -79,6 +79,8 @@ h1 p {
     width: 100%;
 }
 
-#menu{
-    background-color: #002EC1 !important;
+.titulo{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
