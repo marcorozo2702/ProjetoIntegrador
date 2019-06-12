@@ -10,7 +10,6 @@ class Noticia extends CI_Controller {
         //chama o método que faz a validação de login de usuario
         $this->load->model('Noticia_model');
         $this->load->view('Header/Header');
-        $this->load->view('Footer/Footer');
     }
 
     public function index() {
@@ -29,6 +28,7 @@ class Noticia extends CI_Controller {
 
         //chama a view passando o conteudo listado (getAll=buscar todos) da variavel $data (variavel que se refere ao banco de dados)
         $this->load->view('Noticia/Lista', $data);
+        $this->load->view('Footer/Footer');
     }
 
     public function cadastro() {
@@ -54,6 +54,7 @@ class Noticia extends CI_Controller {
             $data['jornalistas'] = $this->Jornalista_model->getAll();
 
             $this->load->view('Noticia/Cadastro', $data);
+            $this->load->view('Footer/Footer');
         } else {
 
             $this->load->model('noticia_model');
@@ -118,6 +119,7 @@ class Noticia extends CI_Controller {
 
 
                 $this->load->view('Noticia/Altera', $data); //carrega a view do formulario
+                $this->load->view('Footer/Footer');
             } else {
                 //resgata os dados inseridos por POST
                 $data = array(
@@ -159,6 +161,9 @@ class Noticia extends CI_Controller {
     public function deletar($id) {
         if ($id > 0) {
 
+            $imagem = $this->Noticia_model->getOne($id);
+            unlink('./uploads/' . $imagem->imagem);
+
             //manda para o model deletar e ja valida o retorno para saber se funcionou
             if ($this->Noticia_model->delete($id)) {
                 $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Sucesso ao deletar.</div>');
@@ -166,6 +171,15 @@ class Noticia extends CI_Controller {
                 $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Falha ao deletar.</div>');
             }
             redirect('Noticia/lista');
+        }
+    }
+
+
+    public function vizualizar($id) {
+        if ($id > 0) {
+            $data['noticia'] = $this->Noticia_model->getOne($id);
+            $this->load->view('Noticia/Vizualiza', $data);
+            $this->load->view('Footer/Footer');
         }
     }
 

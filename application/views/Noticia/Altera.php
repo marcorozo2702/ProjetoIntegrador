@@ -5,7 +5,7 @@
             <div class="card">
                 <h5 class="card-header"><i class="far fa-edit"></i> Cadastro de Noticias</h5>
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?= (isset($noticia)) ? $noticia->titulo : ''; ?>">
                         <div>
                             <div>
@@ -27,7 +27,6 @@
                                     ?>
                                 </select>
                                 <br>
-                                <!--
                                 <label for="userfile"> Fotos: </label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -39,10 +38,9 @@
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <img src="" id="view" name="imagem" width="210" style="max-height:210px"/> <br><br>
+                                        <img src="<?php echo base_url('/uploads/'.$noticia->imagem ) ?>" id="view" name="imagem" width="210" style="max-height:210px"/> <br><br>
                                 </div>
                                 <br>
-                                -->
                                 <div><label for="jornalista"> Jornalista: </label></div>
                                 <select name="jornalista" class="form-control">
                                     <option> selecione um jornalista </option>

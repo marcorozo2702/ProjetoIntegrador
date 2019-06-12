@@ -9,7 +9,7 @@ class Categoria extends CI_Controller
         //chama o método que faz a validação de login de usuario
         $this->load->model('Categoria_model');
         $this->load->view('Header/Header');
-        $this->load->view('Footer/Footer');
+        
     }
     public function index()
     {
@@ -24,6 +24,7 @@ class Categoria extends CI_Controller
         $data['categorias'] = $this->Categoria_model->getAll();
         //chama a view passando o conteudo listado (getAll=buscar todos) da variavel $data (variavel que se refere ao banco de dados)
         $this->load->view('Categoria/Lista', $data);
+        $this->load->view('Footer/Footer');
     }
     public function cadastro()
     {
@@ -36,6 +37,7 @@ class Categoria extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data['categorias'] = $this->Categoria_model->getAll();
             $this->load->view('Categoria/Cadastro', $data);
+            $this->load->view('Footer/Footer');
         } else {
             $this->load->model('Categoria_model');
             $data = array(
@@ -66,6 +68,7 @@ class Categoria extends CI_Controller
                 $this->load->model('Categoria_model');
                 $data['equipes'] = $this->Categoria_model->getAll();
                 $this->load->view('Categoria/Altera', $data);
+                $this->load->view('Footer/Footer');
             } else {
                 //resgata os dados inseridos por POST
                 $data = array(

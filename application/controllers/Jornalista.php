@@ -10,7 +10,7 @@ class Jornalista extends CI_Controller {
         //chama o método que faz a validação de login de usuario
         $this->load->model('Jornalista_model');
         $this->load->view('Header/Header');
-        $this->load->view('Footer/Footer');
+        
     }
 
     public function index() {
@@ -29,6 +29,7 @@ class Jornalista extends CI_Controller {
 
         //chama a view passando o conteudo listado (getAll=buscar todos) da variavel $data (variavel que se refere ao banco de dados)
         $this->load->view('Jornalista/Lista', $data);
+        $this->load->view('Footer/Footer');
     }
 
     public function cadastro() {
@@ -46,6 +47,7 @@ class Jornalista extends CI_Controller {
 
             $data['jornalistas'] = $this->Jornalista_model->getAll();
             $this->load->view('Jornalista/Cadastro', $data);
+            $this->load->view('Footer/Footer');
         } else {
 
             $this->load->model('Jornalista_model');
@@ -84,6 +86,7 @@ class Jornalista extends CI_Controller {
                 //para resgatar os dados da prova a ser alterada
                 $data['jornalista'] = $this->Jornalista_model->getOne($id);
                 $this->load->view('Jornalista/Altera', $data); //carrega a view do formulario
+                $this->load->view('Footer/Footer');
             } else {
                 //resgata os dados inseridos por POST
                 $data = array(
