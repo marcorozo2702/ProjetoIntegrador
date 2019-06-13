@@ -27,7 +27,7 @@
                                     echo '<br>';
                                     echo '<a class="btn btn-outline-primary btn-sm mr-2" href="'. $this->config->base_url() . 'Noticia/alterar/' . $n ->id .'"><i class="fas fa-pencil-alt"></i></a>';
                                     echo '<a class="btn btn-outline-danger btn-sm mr-2" href="'. $this->config->base_url() . 'Noticia/deletar/' . $n ->id .'"><i class="fas fa-trash"></i></a>';
-                                    echo '<a class="btn btn-outline-secondary btn-sm" href="'. $this->config->base_url() . 'Noticia/vizualiza/'. $n->id . '"><i class="fab fa-readme"></i></a>';
+                                    echo '<a class="btn btn-outline-secondary btn-sm" href="'. $this->config->base_url() . 'Noticia/vizualizar/'. $n->id . '"><i class="fab fa-readme"></i></a>';
                                     echo '</div>';
                                     echo '</div>';
                                 echo '</div>';
