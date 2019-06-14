@@ -11,7 +11,8 @@
                    
                         <?php
                         foreach ($noticias as $n){
-                            echo '<div class="col-3">';
+                            echo '<div class="col-3 mt-4">';
+                            echo '<row>';
                                 echo '<div class="card" id="tm-lista">';
                                     echo '<div class="text-center mt-2">';
                                     if (!empty($n->imagem)) {
@@ -31,6 +32,7 @@
                                     echo '</div>';
                                     echo '</div>';
                                 echo '</div>';
+                                echo '</row><hr>';
                             echo '</div>';
                         }
                         ?>

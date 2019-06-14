@@ -12,7 +12,8 @@ class Noticia_model extends CI_Model {
         $this->db->select('noticia.*, categoria.nome as nomecategoria, jornalista.nome as nomejornalista');
         $this->db->from('noticia');
         $this->db->join('categoria', 'categoria.id = noticia.cd_categoria', 'inner');                        //nome da tabela no db
-        $this->db->join('jornalista', 'jornalista.id = noticia.cd_jornalista', 'inner');               //nome da tabela no db
+        $this->db->join('jornalista', 'jornalista.id = noticia.cd_jornalista', 'inner');
+        $this->db->order_by('data', 'desc');//nome da tabela no db
         $query = $this->db->get();
         
         return $query->result();
@@ -25,9 +26,13 @@ class Noticia_model extends CI_Model {
     
     public function getOne($id){
         //faz o filtro por id na consulta sql
-        $this->db->where('id', $id); //SELECT * FROM integrante WHERE id='valor recebido no parametro'
+        $this->db->select('noticia.*,categoria.nome as nomecategoria, jornalista.nome as nomejornalista');
+        $this->db->from('noticia');
+        $this->db->join('jornalista', 'jornalista.id = noticia.cd_jornalista', 'inner');
+        $this->db->join('categoria', 'categoria.id = noticia.cd_categoria', 'inner'); 
+        $this->db->where('noticia.id', $id); //SELECT * FROM integrante WHERE id='valor recebido no parametro'
         //busca a prova na db respeitando o filtro
-        $query = $this->db->get('noticia');
+        $query = $this->db->get();
         //retorna apenas a primeira linha
         return $query->row(0);
     }

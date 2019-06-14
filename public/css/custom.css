@@ -30,43 +30,9 @@ h1{
 h1 p {
     color: #636363;
 }
-.agora{
-    font-style: normal;
-    font-size: 20px;
-    font-weight: 800;
-}
-#rodape{
-    width: auto;
-    height: 60px;
-    margin: 0 auto;
-    background-color: #008AFF;
-}
-#rodape a{
-    font-size: 15px;
-}
-.rodapeicone{
-    margin-top: 10px;
-    font-size: 35px;
-    color: #CDCDCE;
-}
+
 @media screen and (max-width: 762px) {    /* Para mobile tela */
-    #rodape{
-        height: auto;
-        margin: 0 auto;
-        background-color: #008AFF;
-    }
-    .rodapeicone {
-        margin-top: 10px;
-        font-size: 30px;
-        color: #CDCDCE;
-        text-align: center;
-    }
-    .catmobile {
-        text-align: center;
-    }
-    #rodape .logo-rodape{
-        text-align: center;
-    }
+      
     .logocabeca{
         text-align: center;
     }
