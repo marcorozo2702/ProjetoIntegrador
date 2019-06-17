@@ -68,6 +68,7 @@ class Noticia extends CI_Controller {
                 'data' => date('Y-m-d H:i:s')
             );
 
+            
             $config['upload_path'] = './uploads/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_width'] = 1024;
