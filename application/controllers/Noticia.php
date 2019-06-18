@@ -71,8 +71,8 @@ class Noticia extends CI_Controller {
             
             $config['upload_path'] = './uploads/';
             $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_width'] = 1024;
-            $config['max_height'] = 768;
+            $config['max_width'] = 1920;
+            $config['max_height'] = 1080;
             $config['encrypt_name'] = true;
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('userfile')) {
@@ -82,7 +82,6 @@ class Noticia extends CI_Controller {
                 //pega o nome do arquivo que foi enviado e adiciona no array  $data
                 $data['imagem'] = $this->upload->data('file_name');
             }
-
 
             if ($this->Noticia_model->insert($data)) {
                 $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Noticia inserido.</div>');

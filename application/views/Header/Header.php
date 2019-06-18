@@ -78,5 +78,12 @@
                     </li>
                 </ul>
             </div>
+            <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= $this->config->base_url() . 'Jornalista/sair' ?>">
+                            Sair<i class="fas fa-sign-out-alt ml-1"></i>
+                        </a>
+                    </li>
+                </ul>
         </nav>
         

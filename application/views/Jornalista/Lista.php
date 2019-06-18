@@ -27,10 +27,10 @@
                                             echo '<tr>';
                                             echo '<td>' . $j->nome . '</td>';
                                             echo '<td>' . $j->email . '</td>';
-                                            echo '<td class="text-center">'
-                                            . '<a class="apagar btn btn-primary btn-sm mr-2" href="' . $this->config->base_url() . 'Jornalista/alterar/' . $j ->id . '">Alterar</a>'
-                                            . '<a class="apagar btn btn-danger btn-sm " href="' . $this->config->base_url() . 'Jornalista/deletar/' . $j->id . '">Deletar</a>'
-                                            . '</td>';
+                                            echo '<td class="text-center">';
+                                            echo ($this->session->userdata('admin') == '1') ? '<a class="apagar btn btn-primary btn-sm mr-2" href="' . $this->config->base_url() . 'Jornalista/alterar/' . $j ->id . '">Alterar</a>'
+                                            . '<a class="apagar btn btn-danger btn-sm " href="' . $this->config->base_url() . 'Jornalista/deletar/' . $j->id . '">Deletar</a>' : '';
+                                            echo '</td>';
                                             echo '</tr>';
                                         }
                                         ?>
