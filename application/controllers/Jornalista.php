@@ -72,36 +72,41 @@ class Jornalista extends CI_Controller {
     }
 
     public function cadastrar() {
+        if ($this->session->userdata('admin') == '1') {
 
-        //fazendo a validação
-        $this->form_validation->set_rules('nome', 'nome', 'required'); //nome do campo, id do campo, se é requirido ou não
-        $this->form_validation->set_rules('email', 'email', 'required');
-        $this->form_validation->set_rules('senha', 'senha', 'required');
+            //fazendo a validação
+            $this->form_validation->set_rules('nome', 'nome', 'required'); //nome do campo, id do campo, se é requirido ou não
+            $this->form_validation->set_rules('email', 'email', 'required');
+            $this->form_validation->set_rules('senha', 'senha', 'required');
 
-        //validação do preenchimento
-        if ($this->form_validation->run() == false) {
+            //validação do preenchimento
+            if ($this->form_validation->run() == false) {
 
-            $data['jornalistas'] = $this->Jornalista_model->getAll();
-            $this->load->view('Header/Header');
-            $this->load->view('Jornalista/Cadastro', $data);
-            $this->load->view('Footer/Footer');
-        } else {
-
-            $this->load->model('Jornalista_model');
-
-            $data = array(
-                'nome' => $this->input->post('nome'),
-                'email' => $this->input->post('email'),
-                'senha' => $this->input->post('senha')
-            );
-
-            if ($this->Jornalista_model->insert($data)) {
-                $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Jornalista inserido.</div>');
-                redirect('Jornalista/lista');
+                $data['jornalistas'] = $this->Jornalista_model->getAll();
+                $this->load->view('Header/Header');
+                $this->load->view('Jornalista/Cadastro', $data);
+                $this->load->view('Footer/Footer');
             } else {
-                $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Erro ao registrar jornalista.</div>');
-                redirect('Jornalista/cadastro'); //se nao der certo manda de volta para o cadastro
+
+                $this->load->model('Jornalista_model');
+
+                $data = array(
+                    'nome' => $this->input->post('nome'),
+                    'email' => $this->input->post('email'),
+                    'senha' => $this->input->post('senha')
+                );
+
+                if ($this->Jornalista_model->insert($data)) {
+                    $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Jornalista inserido.</div>');
+                    redirect('Jornalista/lista');
+                } else {
+                    $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Erro ao registrar jornalista.</div>');
+                    redirect('Jornalista/cadastro'); //se nao der certo manda de volta para o cadastro
+                }
             }
+        } else {
+            $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Jornalista inserido.</div>');
+            redirect('Jornalista/lista');
         }
     }
 

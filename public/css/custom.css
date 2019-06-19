@@ -50,3 +50,6 @@ h1 p {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.imagemCHI{
+    border-radius: 35px;
+}
