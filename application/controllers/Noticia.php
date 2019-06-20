@@ -65,7 +65,8 @@ class Noticia extends CI_Controller {
                 'cd_categoria' => $this->input->post('categoria'),
                 'cd_jornalista' => $this->input->post('jornalista'),
                 'texto' => $this->input->post('texto'),
-                'data' => date('Y-m-d H:i:s')
+                'data' => date('Y-m-d H:i:s'),
+                'hora' => date('Y-m-d H:i:s')
             );
 
             

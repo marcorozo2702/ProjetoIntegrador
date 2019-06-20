@@ -9,6 +9,7 @@ class Pagina extends CI_Controller {
         parent::__construct();
         $this->load->view('Header/Header');
         $this->load->model('Noticia_model');
+        $this->load->model('Pagina_model');
         
         
     }
@@ -21,6 +22,8 @@ class Pagina extends CI_Controller {
 
         
         $data['noticias'] = $this->Noticia_model->getAll();
+        $data['eSports'] = $this->Pagina_model->getEsports();
+       
 
         //chama a view passando o conteudo listado (getAll=buscar todos) da variavel $data (variavel que se refere ao banco de dados)
         $this->load->view('Pagina/Inicio', $data);

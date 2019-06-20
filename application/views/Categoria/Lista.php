@@ -5,10 +5,18 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <title>Categorias</title>
     </head>
-    <body>        
+    <body>    
+
         <div class="container mt-5" >
             <div class="row">
                 <div class="col-12">
+                    <?php
+                    //para exibir mensagem (falha) para o usuario mesmo redirecionando
+                    $mensagem = $this->session->flashdata('mensagem');
+                    if (isset($mensagem)) {
+                        echo $mensagem;
+                    }
+                    ?>
                     <div class="card">
                         <h5 class="card-header"> Categorias<a href="<?= $this->config->base_url() . 'Categoria/cadastro' ?>" class="btn btn-outline-dark btn-sm offset-md-10"> +Nova</a></h5>
                         <div class="card-body">
@@ -26,7 +34,7 @@
                                             echo '<tr>';
                                             echo '<td>' . $c->nome . '</td>';
                                             echo '<td class="text-center">'
-                                            . '<a class=" btn btn-primary btn-sm mr-2" href="' . $this->config->base_url() . 'Categoria/alterar/' . $c ->id . '">Alterar</a>'
+                                            . '<a class=" btn btn-primary btn-sm mr-2" href="' . $this->config->base_url() . 'Categoria/alterar/' . $c->id . '">Alterar</a>'
                                             . '<a class=" btn btn-danger btn-sm " href="' . $this->config->base_url() . 'Categoria/deletar/' . $c->id . '">Deletar</a>'
                                             . '</td>';
                                             echo '</tr>';

@@ -53,3 +53,9 @@ h1 p {
 .imagemCHI{
     border-radius: 35px;
 }
+
+.titulocardsds{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
