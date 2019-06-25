@@ -36,7 +36,7 @@ class Jornalista extends CI_Controller {
                 //pois ele slva dados permanentes enquanto durar a sessão
                 $this->session->set_userdata($data);
                 //abre a pagina principal(padrão) do sistema
-                redirect($this->config->base_url());
+                redirect($this->config->base_url() . 'Noticia/lista');
             } else {
                 $this->session->set_flashdata('mensagem', 'Usuário e Senha incorretos.');
                 //redireciona para a pagina de login OBRIGANDO fazer o login.

@@ -1,5 +1,13 @@
 
+
 <div class="container mt-5" >
+    <?php
+        //para exibir mensagem (falha) para o usuario mesmo redirecionando
+        $mensagem = $this->session->flashdata('mensagem');
+        if (isset($mensagem)) {
+            echo $mensagem;
+        }
+        ?>
     <div class="row">
         <div class="col-10 offset-md-1 ">
             <div class="card">

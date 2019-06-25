@@ -72,8 +72,8 @@ class Noticia extends CI_Controller {
             
             $config['upload_path'] = './uploads/';
             $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_width'] = 1920;
-            $config['max_height'] = 1080;
+            $config['max_width'] = 192000000;
+            $config['max_height'] = 108000000;
             $config['encrypt_name'] = true;
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('userfile')) {
@@ -86,7 +86,7 @@ class Noticia extends CI_Controller {
 
             if ($this->Noticia_model->insert($data)) {
                 $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Noticia inserido.</div>');
-                redirect('Noticia/lista');
+                redirect('Noticia/cadastro');
             } else {
                 $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Erro ao registrar noticia.</div>');
                 redirect('Noticia/cadastro'); //se nao der certo manda de volta para o cadastro
