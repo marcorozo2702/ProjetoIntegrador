@@ -7,16 +7,16 @@
         <title>Cadastro de Categorias</title>
     </head>
     <body>
-        <?php
-        //para exibir mensagem (falha) para o usuario mesmo redirecionando
-        $mensagem = $this->session->flashdata('mensagem');
-        if (isset($mensagem)) {
-            echo $mensagem;
-        }
-        ?>
         <div class="container mt-5" >
             <div class="row">
                 <div class="col-8 offset-md-2">
+                    <?php
+                    //para exibir mensagem (falha) para o usuario mesmo redirecionando
+                    $mensagem = $this->session->flashdata('mensagem');
+                    if (isset($mensagem)) {
+                        echo $mensagem;
+                    }
+                    ?>
                     <div class="card">
                         <h5 class="card-header"><i class="far fa-edit"></i> Cadastro de Categorias</h5>
                         <div class="card-body">

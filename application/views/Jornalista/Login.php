@@ -11,6 +11,13 @@
                 <div>
                     <h2 class="card-header text-center" ><i class="fas fa-user-circle mr-1"></i></h2>
                     <div class="card-body">
+                        <?php
+        //para exibir mensagem (falha) para o usuario mesmo redirecionando
+        $mensagem = $this->session->flashdata('mensagem');
+        if (isset($mensagem)) {
+            echo $mensagem;
+        }
+        ?>
                         <form action="" method="POST" name="login">
                             <div class="form-group">
                                 <label for="email"> Email:</label>

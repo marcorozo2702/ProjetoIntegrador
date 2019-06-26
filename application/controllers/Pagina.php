@@ -37,6 +37,7 @@ class Pagina extends CI_Controller {
         if ($id > 0) {
             $data['noticia'] = $this->Noticia_model->getOne($id);
             $data['categorias'] = $this->Categoria_model->getAll();
+            $data['sugestao'] = $this->Pagina_model->getSugestao($id);
             $this->load->view('Pagina/Header', $data);
             $this->load->view('Pagina/Vizualiza', $data);
             $this->load->view('Footer/Footer');
@@ -53,12 +54,13 @@ class Pagina extends CI_Controller {
 
     public function vizualizarCategoria($id){
         if ($id > 0) {
+            $data['categoria'] = $this->Pagina_model->getCategoriaOne($id);
             $data['noticias'] = $this->Pagina_model->getCategoria($id);
             $data['categorias'] = $this->Categoria_model->getAll();
             $this->load->view('Pagina/Header', $data);
             $this->load->view('Pagina/Categorias', $data);
             $this->load->view('Footer/Footer');
-        }
+        } 
     }
     
 }

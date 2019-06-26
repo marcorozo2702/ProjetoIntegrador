@@ -85,10 +85,10 @@ class Noticia extends CI_Controller {
             }
 
             if ($this->Noticia_model->insert($data)) {
-                $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Noticia inserido.</div>');
+                $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Registrado com sucesso.</div>');
                 redirect('Noticia/cadastro');
             } else {
-                $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Erro ao registrar noticia.</div>');
+                $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Erro ao registrar.</div>');
                 redirect('Noticia/cadastro'); //se nao der certo manda de volta para o cadastro
             }
         }
@@ -147,10 +147,10 @@ class Noticia extends CI_Controller {
                 }
 
                 if ($this->Noticia_model->update($id, $data)) {
-                    $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Jornalista alterado.</div>');
+                    $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Alterado com sucesso.</div>');
                     redirect('Noticia/lista');
                 } else {
-                    $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Ocorreu um erro ao alterar.</div><br><br>');
+                    $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Erro ao alterar.</div><br><br>');
                     redirect('Noticia/altera/' . $id);
                 }
             }
@@ -167,9 +167,10 @@ class Noticia extends CI_Controller {
 
             //manda para o model deletar e ja valida o retorno para saber se funcionou
             if ($this->Noticia_model->delete($id)) {
-                $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Sucesso ao deletar.</div>');
+                $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Deletado com sucesso.</div>');
+                redirect('Noticia/lista');
             } else {
-                $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Falha ao deletar.</div>');
+                $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Erro ao deletar.</div>');
             }
             redirect('Noticia/lista');
         }

@@ -9,6 +9,13 @@
         <div class="container mt-5" >
             <div class="row">
                 <div class="col-12">
+                    <?php
+            //para exibir mensagem (falha) para o usuario mesmo redirecionando
+            $mensagem = $this->session->flashdata('mensagem');
+            if (isset($mensagem)) {
+                echo $mensagem;
+            }
+            ?>
                     <div class="card">
                         <h5 class="card-header"> Jornalistas Cadastrados</h5>
                         <div class="card-body">

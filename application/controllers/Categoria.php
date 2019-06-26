@@ -44,10 +44,10 @@ class Categoria extends CI_Controller
                 'nome' => $this->input->post('nome')
             );
             if ($this->Categoria_model->insert($data)) {
-                $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Jornalista inserido.</div>');
-                redirect('Categoria/lista');
+                $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Registrado com sucesso.</div>');
+                redirect('Categoria/cadastro');
             } else {
-                $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Erro ao registrar jornalista.</div>');
+                $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Erro ao registrar.</div>');
                 redirect('Categoria/cadastro'); //se nao der certo manda de volta para o cadastro
             }
         }
@@ -75,10 +75,10 @@ class Categoria extends CI_Controller
                     'nome' => $this->input->post('nome')
                 );
                 if ($this->Categoria_model->update($id, $data)) {
-                    $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Categoria alterado.</div>');
+                    $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Alterado com sucesso.</div>');
                     redirect('Categoria/lista');
                 } else {
-                    $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Ocorreu um erro ao alterar.</div><br><br>');
+                    $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Erro ao alterar.</div><br><br>');
                     redirect('Categoria/alterar/' . $id);
                 }
             }

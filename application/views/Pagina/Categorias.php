@@ -1,7 +1,10 @@
 
 <br>
 <div class="container"> 
-    <div class="card-title text-center col"><h2 style="color: #2c57d6;"> Últimas Notícias</h2></div>
+    <?php
+        
+            echo '<div class="card-title text-center col"><h2 style="color: #2c57d6;">'. $categoria->nome.'</h2></div>';
+        ?>
     <div class="row mt-5 offset-md-1" style="width: ">
         <div class="row">
         <?php
@@ -11,7 +14,7 @@
             echo '<div class="mb-4 col-6 mr-5 mt-4 offset-1" style="width:1300px; height: 150px;">';
                 echo '<div class="row no-gutters">';
                     echo '<div class="col-md-4">';  
-                        echo '<a href="'. $this->config->base_url() . 'Pagina/vizualizar/'. $n->id . '"><img src="' . base_url('/uploads/'. $n->imagem). '" class="card-img  align-middle rounded mt-4  " alt="" style="width: 220px;  height: 125px;"></a>';
+                        echo '<a href="'. $this->config->base_url() . 'Pagina/vizualizar/'. $n->id . '"><img src="' . base_url('/uploads/'. $n->imagem). '" class="card-img  align-middle rounded mt-4  " alt="" style=" width: 220px;  height: 125px; object-fit: cover;"></a>';
                     echo '</div>';
                     echo '<div class="col-md-8">';
                         echo '<div class="card-body">';

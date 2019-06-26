@@ -73,6 +73,9 @@
                         <a class="dropdown-item" href="<?= $this->config->base_url() . 'Categoria/Cadastro' ?>">Cadastrar</a>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a href="<?= $this->config->base_url() ?>" class="nav-link ml-3" id="menuPagina">Página</a>
+                </li>
             </ul>
         </div>
         <ul class="navbar-nav justify-content-end">

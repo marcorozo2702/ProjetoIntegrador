@@ -39,6 +39,22 @@ class Pagina_model extends CI_Model {
         
         return $query->result();
     }
+    function getCategoriaOne($id){
+        $this->db->from('categoria');
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+        return $query->row();
+    }
     
+    function getSugestao($id){
+        $this->db->select('noticia.*');
+        $this->db->from('noticia');
+        $this->db->where('id != ' . $id);
+        $this->db->order_by('rand()');
+        $this->db->limit(3);
+        $query = $this->db->get();
+        
+        return $query->result();
+    }
 
 }

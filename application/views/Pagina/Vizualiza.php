@@ -5,15 +5,29 @@
             <hr><h5 id="descricaonoticia" class="text-muted mt-2"><?php echo $noticia->descricao ?> </h5><br>
             <p id="nomejornalista" class="text-black-50" > Por <?php echo $noticia->nomejornalista ?> - <?php echo $noticia->data ?> - <?php echo $noticia->nomecategoria ?></p><hr><br>
             <div align="center"><?php
-                        if (!empty($noticia->imagem)) {
-                                                echo ' <img class="img-fluid" src="'  . base_url('/uploads/'. $noticia->imagem ) . '"  style="border: 1px solid #c6c2c2; max-height: 480px">';
-                                            } else {
-                                                echo '<br>';
-                                            }
-                 ?>
+                if (!empty($noticia->imagem)) {
+                    echo ' <img class="img-fluid" style="" src="' . base_url('/uploads/' . $noticia->imagem) . '"  style="border: 1px solid #c6c2c2; max-height: 480px">';
+                } else {
+                    echo '<br>';
+                }
+                ?>
             </div>
             <p class="text-body" style="font-size: 15px"><?php echo $noticia->texto ?></p>
         </div>
-        <div class=""></div>
+    </div>
+    <hr>
+    <h5 class="text-center" style="color: #008AFF;">Sugestões</h5>
+    <div class="row">
+       
+            <?php
+            foreach ($sugestao as $s) {
+                echo '<div class="card col-4 mt-2 p-0" style="width: 18rem;">';
+                echo '<a href="'. $this->config->base_url() . 'Pagina/vizualizar/'. $s->id . '"><img src="' . base_url('/uploads/' . $s->imagem) . '" style="object-fit: cover; height: 180px;" class="card-img-top"></a>';
+                echo '<div class="card-body">';
+                echo '<p class="card-text text-dark"><a style=" color: #111111;" href="'. $this->config->base_url() . 'Pagina/vizualizar/'. $s->id . '">' . $s->titulo . '</a></p>';
+                echo '</div>';
+                echo '</div>';
+            }
+            ?>
     </div>
 </div>

@@ -1,17 +1,18 @@
 
 
 <div class="container mt-5" >
-    <?php
-        //para exibir mensagem (falha) para o usuario mesmo redirecionando
-        $mensagem = $this->session->flashdata('mensagem');
-        if (isset($mensagem)) {
-            echo $mensagem;
-        }
-        ?>
+
     <div class="row">
         <div class="col-10 offset-md-1 ">
+            <?php
+            //para exibir mensagem (falha) para o usuario mesmo redirecionando
+            $mensagem = $this->session->flashdata('mensagem');
+            if (isset($mensagem)) {
+                echo $mensagem;
+            }
+            ?>
             <div class="card">
-                <h5 class="card-header"><i class="far fa-edit"></i> Cadastro de Noticias</h5>
+                <h5 class="card-header"><i class="far fa-edit"></i> Cadastro de Noticias<a href="<?= $this->config->base_url() . 'Categoria/cadastro' ?>" class="btn btn-outline-dark btn-sm offset-md-7"> +Adicionar categoria</a></h5>
                 <div class="card-body">
                     <form action="" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="">

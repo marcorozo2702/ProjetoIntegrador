@@ -38,7 +38,7 @@ class Jornalista extends CI_Controller {
                 //abre a pagina principal(padrão) do sistema
                 redirect($this->config->base_url() . 'Noticia/lista');
             } else {
-                $this->session->set_flashdata('mensagem', 'Usuário e Senha incorretos.');
+                $this->session->set_flashdata('mensagem', '<div class="alert alert-danger">Usuario ou senha incorretos.</div>');
                 //redireciona para a pagina de login OBRIGANDO fazer o login.
                 redirect($this->config->base_url() . 'Jornalista/login');
             }
@@ -143,10 +143,10 @@ class Jornalista extends CI_Controller {
                 );
 
                 if ($this->Jornalista_model->update($id, $data)) {
-                    $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Jornalista alterado.</div>');
+                    $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Alterado com sucesso.</div>');
                     redirect('Jornalista/lista');
                 } else {
-                    $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Ocorreu um erro ao alterar.</div><br><br>');
+                    $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Erro ao alterar.</div><br><br>');
                     redirect('Jornalista/altera/' . $id);
                 }
             }
@@ -164,6 +164,7 @@ class Jornalista extends CI_Controller {
                 //manda para o model deletar e ja valida o retorno para saber se funcionou
                 if ($this->Jornalista_model->delete($id)) {
                     $this->session->set_flashdata('mensagem', '<div class="alert alert-success">Sucesso ao deletar.</div>');
+                    redirect('Jornalista/lista');
                 } else {
                     $this->session->set_flashdata('mensagem', '<div class="alert alert-danger>Falha ao deletar.</div>');
                 }
