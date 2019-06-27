@@ -59,6 +59,7 @@ class Jornalista extends CI_Controller {
 
         //$data precisa ser em formato de array para ser passada para a lista na view
         //chamamos o metodo getAll (para buscar todos, já que e uma listagem) do arquivo Integrante_model
+        $this->Jornalista_model->verificaLogin();
         $data['jornalistas'] = $this->Jornalista_model->getAll();
 
         //chama a view passando o conteudo listado (getAll=buscar todos) da variavel $data (variavel que se refere ao banco de dados)

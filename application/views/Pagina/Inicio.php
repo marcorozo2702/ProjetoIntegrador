@@ -22,7 +22,7 @@
                         </div>
                     </div>
 
-                           <?php //$x==3; break;
+                           <?php 
                            }?>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
@@ -45,10 +45,10 @@
         <?php
         
         foreach ($eSports as $es){
-        echo '<div class="card mb-4 col-5 mr-5" ">';
+        echo '<div class="card mb-4 col-5 mr-5" style="height: 150px;" ">';
             echo '<div class="row no-gutters">';
                 echo '<div class="col-md-4">';  
-                    echo '<a href="'. $this->config->base_url() . 'Pagina/vizualizar/'. $es->id . '"><img src="' . base_url('/uploads/'. $es->imagem). '" class="card-img  align-middle rounded mt-3" alt="" style="max-width: 140px; object-fit: cover; min-width:140px; max-height: 90px; min-height: 90px;"></a>';
+                    echo '<a href="'. $this->config->base_url() . 'Pagina/vizualizar/'. $es->id . '"><img src="' . base_url('/uploads/'. $es->imagem). '" class="card-img  align-middle rounded mt-3" alt="" style="width: 140px; object-fit: cover; height: 110px;"></a>';
                 echo '</div>';
                 echo '<div class="col-md-8">';
                     echo '<div class="card-body">';

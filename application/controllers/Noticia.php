@@ -9,7 +9,10 @@ class Noticia extends CI_Controller {
         parent::__construct();
         //chama o método que faz a validação de login de usuario
         $this->load->model('Noticia_model');
+        
         $this->load->view('Header/Header');
+        $this->load->model('Jornalista_model');
+        $this->Jornalista_model->verificaLogin();
     }
 
     public function index() {

@@ -19,9 +19,9 @@
                                 echo '<div class="card" id="tm-lista">';
                                     echo '<div class="text-center mt-2">';
                                     if (!empty($n->imagem)) {
-                                                echo '<td> <img src="'  . base_url('/uploads/'. $n->imagem ) . '" width ="210"  height = "124" class="rounded" style="max-height: 160px; object-fit: cover;"></td>';
+                                                echo '<td> <a href="'. $this->config->base_url() . 'Noticia/vizualizar/'. $n->id . '"><img src="'  . base_url('/uploads/'. $n->imagem ) . '" width ="210"  height = "124" class="rounded" style="max-height: 160px; object-fit: cover;"></a></td>';
                                             } else {
-                                                echo '<td> <img src="'.base_url('/uploads/indisponivel.png') .'" width ="210" class="rounded" style="max-height: 160px; object-fit: cover; border: 1px solid #c6c2c2"></td>';
+                                                echo '<td> <a href="'. $this->config->base_url() . 'Noticia/vizualizar/'. $n->id . '"><img src="'.base_url('/uploads/indisponivel.png') .'" width ="210" class="rounded" style="max-height: 160px; object-fit: cover; border: 1px solid #c6c2c2"></a></td>';
                                             }
                                     echo '</div>';
                                     echo '<div class="card-body">';

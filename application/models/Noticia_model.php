@@ -8,13 +8,17 @@
 
 class Noticia_model extends CI_Model {
  
-    function getAll() {
+    function getAll($limite=null) {
         $this->db->select('noticia.*, categoria.nome as nomecategoria, jornalista.nome as nomejornalista');
         $this->db->from('noticia');
         $this->db->join('categoria', 'categoria.id = noticia.cd_categoria', 'inner');                        //nome da tabela no db
         $this->db->join('jornalista', 'jornalista.id = noticia.cd_jornalista', 'inner');
         $this->db->order_by('data', 'desc');//nome da tabela no db
+        if ($limite!=null){
+            $this->db->limit($limite);
+        }
         $query = $this->db->get();
+        
         
         return $query->result();
     }
@@ -26,7 +30,7 @@ class Noticia_model extends CI_Model {
     
     public function getOne($id){
         //faz o filtro por id na consulta sql
-        $this->db->select('noticia.*,categoria.nome as nomecategoria, jornalista.nome as nomejornalista');
+        $this->db->select('noticia.*,categoria.nome as nomecategoria, jornalista.nome as nomejornalista, (select count(id) from contador where cd_noticia = noticia.id) as totalacesso');
         $this->db->from('noticia');
         $this->db->join('jornalista', 'jornalista.id = noticia.cd_jornalista', 'inner');
         $this->db->join('categoria', 'categoria.id = noticia.cd_categoria', 'inner'); 
@@ -59,6 +63,10 @@ class Noticia_model extends CI_Model {
         } else {
             return false;
         }
+    }
+    
+    public function acesso($id){
+        $this->db->insert('contador', array('cd_noticia'=>$id, 'data' => date('Y-m-d H:i:s'), 'ip'=>$_SERVER['REMOTE_ADDR']));
     }
     
 }

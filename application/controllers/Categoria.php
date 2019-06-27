@@ -9,6 +9,8 @@ class Categoria extends CI_Controller
         //chama o método que faz a validação de login de usuario
         $this->load->model('Categoria_model');
         $this->load->view('Header/Header');
+        $this->load->model('Jornalista_model');
+        $this->Jornalista_model->verificaLogin();
         
     }
     public function index()

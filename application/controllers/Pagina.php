@@ -21,7 +21,7 @@ class Pagina extends CI_Controller {
     public function listar() {
 
         
-        $data['noticias'] = $this->Noticia_model->getAll();
+        $data['noticias'] = $this->Noticia_model->getAll(4);
         $data['categorias'] = $this->Categoria_model->getAll();
         $data['eSports'] = $this->Pagina_model->getEsports();
         $data['esportes'] = $this->Pagina_model->getEsportes();
@@ -41,6 +41,7 @@ class Pagina extends CI_Controller {
             $this->load->view('Pagina/Header', $data);
             $this->load->view('Pagina/Vizualiza', $data);
             $this->load->view('Footer/Footer');
+            $this->Noticia_model->acesso($id);
         }
     }
     

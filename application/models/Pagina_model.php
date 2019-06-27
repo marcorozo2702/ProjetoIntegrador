@@ -47,9 +47,10 @@ class Pagina_model extends CI_Model {
     }
     
     function getSugestao($id){
-        $this->db->select('noticia.*');
+        $this->db->select('noticia.*, categoria.nome as nomecategoria, categoria.id as idcategoria');
         $this->db->from('noticia');
-        $this->db->where('id != ' . $id);
+        $this->db->join('categoria', 'categoria.id = noticia.cd_categoria', 'inner');
+        $this->db->where('noticia.id != ' . $id);
         $this->db->order_by('rand()');
         $this->db->limit(3);
         $query = $this->db->get();

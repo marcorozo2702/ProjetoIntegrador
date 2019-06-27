@@ -36,7 +36,7 @@
                 <!-- weather widget start --><a target="_blank" href="https://ibooked.com.br/weather/chapeco-14790"><img src="https://w.bookcdn.com/weather/picture/13_14790_1_8_ffffff_158_fff5d9_000000_0088ff_3_fff5d9_333333_0_6.png?scode=124&domid=585&anc_id=43968" alt="booked.net" /></a><!-- weather widget end -->
             </div>
             <div class="col-md-3 offset-md-3 mt-2 logocabeca">
-                <a href="<?= $this->config->base_url() . 'Pagina/listar' ?>"><img src="<?= base_url('\public\image\LOGO.svg') ?>"></a>
+                <a href="<?= $this->config->base_url() ?>"><img src="<?= base_url('\public\image\LOGO.svg') ?>"></a>
             </div>
             <div class="col-md-2 mt-3 d-none d-sm-block"></div>
             <div class="col-md-2 mt-4 d-none d-sm-block">

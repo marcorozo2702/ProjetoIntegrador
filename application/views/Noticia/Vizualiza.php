@@ -12,7 +12,7 @@
                                                 echo '<br>';
                                             }
                  ?>
-            </div>
+            </div><hr>
             <p class="text-body" style="font-size: 15px"><?php echo $noticia->texto ?></p>
         </div>
     </div>
